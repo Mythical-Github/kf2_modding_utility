@@ -35,7 +35,7 @@ function DoOnceOnTickExample()
 {
 	if( bDoOnce == False )
 	{
-		`log("Do Once On Tick Example Has Fired");
+		`log("Do Once On Tick Example Has Fired Off");
 		bDoOnce = True;
 	}
 } 

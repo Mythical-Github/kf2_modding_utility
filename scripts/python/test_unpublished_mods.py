@@ -9,7 +9,7 @@ mutator_name = "KF_Mutator_Mythical"
 steam_app_id = 232090
 
 
-subprocess.run(f"{steam_exe} -applaunch {steam_app_id} {map_name}?game={package_name}.{game_mode}?mutator={package_name}.{mutator_name} -log -useunpublished")
-
+#subprocess.run(f"{steam_exe} -applaunch {steam_app_id} {map_name}?game={package_name}.{game_mode}?mutator={package_name}.{mutator_name} -log -useunpublished")
+subprocess.run(f"{steam_exe} -applaunch {steam_app_id} {map_name}?game={package_name}.{game_mode}?mutator={package_name}.{mutator_name},ServerExtMut.ServerExtMut -log -useunpublished")
 
 quit()

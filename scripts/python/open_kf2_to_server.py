@@ -1,4 +1,3 @@
-import os
 import subprocess
 
 steam_app_id = "232090"

@@ -1,7 +1,7 @@
 import subprocess
 
 steam_app_id = "232090"
-server_ip = "23.105.148.17"
+server_ip = ""
 
 steam_exe = r"C:\Program Files (x86)\Steam\Steam.exe"
 

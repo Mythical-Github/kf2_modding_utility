@@ -1,17 +1,9 @@
+import os
 import subprocess
 
-steam_exe = r"C:\Program Files (x86)\Steam\steam.exe"
-server_ip = ""
-steam_app_id = 232090
+steam_app_id = "232090"
+server_ip = "23.105.148.17"
 
-command = [
-    steam_exe,
-    "-applaunch",
-    str(steam_app_id),
-#    f"connect={server_ip}"
-#    f"open {server_ip}"
-]
+steam_exe = r"C:\Program Files (x86)\Steam\Steam.exe"
 
-subprocess.run(command)
-
-quit()
+subprocess.Popen([steam_exe, "-applaunch", steam_app_id, "+connect", server_ip])

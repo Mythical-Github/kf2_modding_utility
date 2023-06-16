@@ -1,7 +1,7 @@
 import subprocess
 
 username = ""
-password = "
+password = ""
 steam_cmd_exe = r"C:\Programs\steamcmd\steamcmd.exe"
 mod_vdf = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\upload_mod_to_workshop_alt_method\Mod.vdf"
 

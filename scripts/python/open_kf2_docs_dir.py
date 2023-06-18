@@ -1,7 +1,8 @@
 import os
 import json
 
-settings_json = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\other\settings.json"
+script_dir = os.path.dirname(os.path.abspath(__file__))
+settings_json = os.path.join(script_dir, '..', '..', 'other', 'settings.json')
 
 with open(settings_json) as file:
     data = json.load(file)

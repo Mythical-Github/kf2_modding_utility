@@ -21,9 +21,11 @@ def update_mod_packages(kf_editor_ini, mod_package_names_json):
     with open(kf_editor_ini, "w") as file:
         file.writelines(lines)
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+settings_json = os.path.join(script_dir, '..', '..', 'other', 'settings.json')
 
 kf_editor_ini = ""
-mod_package_names_json = "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/add_mod_package_ini_entry/mod_package_names.json"
+mod_package_names_json = os.path.join(script_dir, "..", "..", "..", "scripts", "python", "add_mod_package_ini_entry", "mod_package_names.json")
 update_mod_packages(kf_editor_ini, mod_package_names_json)
 
 quit()

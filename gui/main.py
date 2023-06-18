@@ -2,7 +2,7 @@ import sys
 import json
 import subprocess
 from PyQt5.QtGui import QColor, QLinearGradient, QIcon
-from PyQt5.QtCore import Qt, QEvent, QObject
+from PyQt5.QtCore import Qt, QEvent, QObject, QSettings
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton
 
 title = "KF2 Modding Utility"
@@ -61,10 +61,13 @@ class ButtonHoverEventFilter(QObject):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    
+
     # Set the icon of the window
     app.setWindowIcon(QIcon("kf2_icon.png"))
-    
+
+    # Create QSettings object to store the window position
+    settings = QSettings("MyCompany", "KF2ModdingUtility")
+
     window = QWidget()
     window.setWindowTitle(title)
     window.resize(275, 300)
@@ -74,6 +77,18 @@ if __name__ == '__main__':
     populate_buttons(layout)
 
     window.setLayout(layout)
+
+    # Restore the window position from settings
+    window_pos = settings.value("window_position", defaultValue=window.pos())
+    window.move(window_pos)
+
+# Handle window close event to save the position
+    def save_window_position():
+        settings.setValue("window_position", window.pos())
+
     window.show()
+
+# Save the window position when the application is about to quit
+    app.aboutToQuit.connect(save_window_position)
 
     sys.exit(app.exec())

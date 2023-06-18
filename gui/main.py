@@ -11,38 +11,40 @@ info_json = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\gui\data.json"
 def run_script(path):
     subprocess.run(['python', path])
 
+def load_data_from_json(json_file):
+    with open(json_file) as file:
+        return json.load(file)
+
 def populate_buttons(layout):
-    with open(info_json) as json_file:
-        data = json.load(json_file)
+    data = load_data_from_json(info_json)
 
-        for item in data:
-            title = item['title']
-            path = item['path']
+    for item in data:
+        title = item['title']
+        path = item['path']
 
-            button = QPushButton(title)
-            button.clicked.connect(lambda checked, p=path: run_script(p))
+        button = QPushButton(title)
+        button.clicked.connect(lambda checked, p=path: run_script(p))
 
-            # Set button's gradient background color
-            gradient = QLinearGradient(0, 0, 0, 1)
-            gradient.setColorAt(0, QColor(70, 70, 70))  # Dark grey
-            gradient.setColorAt(1, QColor(128, 0, 0))  # Darker red
+        gradient = QLinearGradient(0, 0, 0, 1)
+        gradient.setColorAt(0, QColor(70, 70, 70))
+        gradient.setColorAt(1, QColor(128, 0, 0))
 
-            gradient_stops = gradient.stops()
-            gradient_str = "qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0,"  # Flipped gradient
+        gradient_stops = gradient.stops()
+        gradient_str = "qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0,"
 
-            for stop in gradient_stops:
-                color = stop[1].darker(200).name()  # Make the red darker
-                pos = 1 - stop[0]  # Reverse the position
-                gradient_str += f" stop: {pos} {color},"
+        for stop in gradient_stops:
+            color = stop[1].darker(200).name()
+            pos = 1 - stop[0]
+            gradient_str += f" stop: {pos} {color},"
 
-            gradient_str = gradient_str.rstrip(",") + ")"
+        gradient_str = gradient_str.rstrip(",") + ")"
 
-            button.setStyleSheet(f"background: {gradient_str}; color: white; border: 1px solid teal;")
-            button.setMinimumHeight(25)  # Set minimum height for the button
+        button.setStyleSheet(f"background: {gradient_str}; color: white; border: 1px solid teal;")
+        button.setMinimumHeight(25)
 
-            button.installEventFilter(ButtonHoverEventFilter(button))  # Install event filter for hover effect
+        button.installEventFilter(ButtonHoverEventFilter(button))
 
-            layout.addWidget(button)
+        layout.addWidget(button)
 
 class ButtonHoverEventFilter(QObject):
     def __init__(self, button):
@@ -61,34 +63,25 @@ class ButtonHoverEventFilter(QObject):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-
-    # Set the icon of the window
-    app.setWindowIcon(QIcon("kf2_icon.png"))
-
-    # Create QSettings object to store the window position
+    app.setWindowIcon(QIcon("kf2_icon_alt.png"))
     settings = QSettings("MyCompany", "KF2ModdingUtility")
 
     window = QWidget()
     window.setWindowTitle(title)
     window.resize(275, 300)
-    window.setStyleSheet("background-color: #111111;")  # Set the background color to dark black
+    window.setStyleSheet("background-color: #111111;")
 
     layout = QVBoxLayout()
     populate_buttons(layout)
 
     window.setLayout(layout)
-
-    # Restore the window position from settings
     window_pos = settings.value("window_position", defaultValue=window.pos())
     window.move(window_pos)
 
-# Handle window close event to save the position
     def save_window_position():
         settings.setValue("window_position", window.pos())
 
     window.show()
-
-# Save the window position when the application is about to quit
     app.aboutToQuit.connect(save_window_position)
 
     sys.exit(app.exec())

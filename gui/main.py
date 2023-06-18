@@ -1,20 +1,14 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton
-from PyQt5.QtGui import QPalette, QColor
 import json
 import subprocess
-import os
+from PyQt5.QtGui import QColor, QLinearGradient, QIcon
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton
 
-title = "KF2 Modding Utility'" 
+title = "KF2 Modding Utility"
 info_json = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\gui\data.json"
 
-
 def run_script(path):
-    startupinfo = subprocess.STARTUPINFO()
-    startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-    startupinfo.dwFlags |= subprocess.CREATE_NO_WINDOW
-    subprocess.run(['python', path], startupinfo=startupinfo)
-
+    subprocess.run(['python', path])
 
 def populate_buttons(layout):
     with open(info_json) as json_file:
@@ -26,35 +20,37 @@ def populate_buttons(layout):
 
             button = QPushButton(title)
             button.clicked.connect(lambda checked, p=path: run_script(p))
-            layout.addWidget(button)
 
+            # Set button's gradient background color
+            gradient = QLinearGradient(0, 0, 0, 1)
+            gradient.setColorAt(0, QColor(70, 70, 70))  # Dark grey
+            gradient.setColorAt(1, QColor(128, 0, 0))  # Darker red
+
+            gradient_stops = gradient.stops()
+            gradient_str = "qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0,"  # Flipped gradient
+
+            for stop in gradient_stops:
+                color = stop[1].darker(150).name()  # Make the red darker
+                pos = 1 - stop[0]  # Reverse the position
+                gradient_str += f" stop: {pos} {color},"
+
+            gradient_str = gradient_str.rstrip(",") + ")"
+
+            button.setStyleSheet(f"background: {gradient_str}; color: white; border: 1px solid teal;")
+            button.setMinimumHeight(25)  # Set minimum height for the button
+
+            layout.addWidget(button)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-
-    # Set Dracula theme stylesheet
-    app.setStyle("Fusion")
-
-    # Dracula color palette
-    palette = QPalette()
-    palette.setColor(QPalette.Window, QColor(40, 42, 54))
-    palette.setColor(QPalette.WindowText, QColor(248, 248, 242))
-    palette.setColor(QPalette.Base, QColor(68, 71, 90))
-    palette.setColor(QPalette.AlternateBase, QColor(62, 66, 82))
-    palette.setColor(QPalette.ToolTipBase, QColor(248, 248, 242))
-    palette.setColor(QPalette.ToolTipText, QColor(248, 248, 242))
-    palette.setColor(QPalette.Text, QColor(248, 248, 242))
-    palette.setColor(QPalette.Button, QColor(68, 71, 90))
-    palette.setColor(QPalette.ButtonText, QColor(248, 248, 242))
-    palette.setColor(QPalette.BrightText, QColor(255, 80, 123))
-    palette.setColor(QPalette.Link, QColor(189, 147, 249))
-    palette.setColor(QPalette.Highlight, QColor(189, 147, 249))
-    palette.setColor(QPalette.HighlightedText, QColor(40, 42, 54))
-    app.setPalette(palette)
-
+    
+    # Set the icon of the window
+    app.setWindowIcon(QIcon("kf2_icon.png"))
+    
     window = QWidget()
-    window.setWindowTitle(title)  # Set the new title
-    window.resize(275, 300)  # Adjust the window width as needed
+    window.setWindowTitle(title)
+    window.resize(275, 300)
+    window.setStyleSheet("background-color: #111111;")  # Set the background color to dark black
 
     layout = QVBoxLayout()
     populate_buttons(layout)

@@ -1,8 +1,14 @@
+import json
 import subprocess
 
-steam_app_id = 0
-server_ip = ""
+settings_json = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\other\settings.json"
 
-steam_exe = r""
+with open(settings_json) as file:
+    data = json.load(file)
 
-subprocess.Popen([steam_exe, "-applaunch", steam_app_id, "+connect", server_ip])
+steam_app_id = data["game_steam_app_id"]
+server_ip = data["kf2_server_ip"]
+
+steam_exe = data["steam_exe"]
+
+subprocess.Popen([steam_exe, "-applaunch", str(steam_app_id), "+connect", server_ip])

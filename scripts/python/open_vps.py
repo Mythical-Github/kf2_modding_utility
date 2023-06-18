@@ -1,7 +1,11 @@
+import json
 import webbrowser
 
-# Specify the URL you want to open
-url = ""
+settings_json = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\other\settings.json"
 
-# Open the URL in the default web browser
+with open(settings_json) as file:
+    data = json.load(file)
+
+url = data["vps_access_url"]
+
 webbrowser.open(url)

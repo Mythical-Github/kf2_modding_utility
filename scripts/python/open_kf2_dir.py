@@ -1,7 +1,11 @@
 import os
+import json
 
-# Define the directory path
-dir_path = r""
+settings_json = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\other\settings.json"
 
-# Open the file browser
+with open(settings_json) as file:
+    data = json.load(file)
+
+dir_path = data["kf2_game_dir"]
+
 os.startfile(dir_path)

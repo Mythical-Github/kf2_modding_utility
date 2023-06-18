@@ -2,6 +2,7 @@ import sys
 import json
 import subprocess
 from PyQt5.QtGui import QColor, QLinearGradient, QIcon
+from PyQt5.QtCore import Qt, QEvent, QObject
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton
 
 title = "KF2 Modding Utility"
@@ -30,7 +31,7 @@ def populate_buttons(layout):
             gradient_str = "qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0,"  # Flipped gradient
 
             for stop in gradient_stops:
-                color = stop[1].darker(150).name()  # Make the red darker
+                color = stop[1].darker(200).name()  # Make the red darker
                 pos = 1 - stop[0]  # Reverse the position
                 gradient_str += f" stop: {pos} {color},"
 
@@ -39,7 +40,24 @@ def populate_buttons(layout):
             button.setStyleSheet(f"background: {gradient_str}; color: white; border: 1px solid teal;")
             button.setMinimumHeight(25)  # Set minimum height for the button
 
+            button.installEventFilter(ButtonHoverEventFilter(button))  # Install event filter for hover effect
+
             layout.addWidget(button)
+
+class ButtonHoverEventFilter(QObject):
+    def __init__(self, button):
+        super().__init__(button)
+        self.button = button
+        self.original_style = button.styleSheet()
+
+    def eventFilter(self, obj, event):
+        if obj == self.button:
+            if event.type() == QEvent.Enter:
+                self.button.setStyleSheet("background: #222222; color: white; border: 1px solid teal;")
+            elif event.type() == QEvent.Leave:
+                self.button.setStyleSheet(self.original_style)
+
+        return super().eventFilter(obj, event)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

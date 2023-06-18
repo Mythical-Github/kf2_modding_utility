@@ -1,3 +1,4 @@
+import os
 import json
 
 
@@ -22,9 +23,12 @@ def update_mod_packages(kf_editor_ini, mod_package_names_json):
         file.writelines(lines)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-settings_json = os.path.join(script_dir, '..', '..', 'other', 'settings.json')
+settings_json = os.path.join(script_dir, '..', '..', '..', 'other', 'settings.json')
 
-kf_editor_ini = ""
+with open(settings_json) as file:
+    data = json.load(file)
+    
+kf_editor_ini = data["kf_editor_ini"]
 mod_package_names_json = os.path.join(script_dir, "..", "..", "..", "scripts", "python", "add_mod_package_ini_entry", "mod_package_names.json")
 update_mod_packages(kf_editor_ini, mod_package_names_json)
 

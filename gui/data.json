@@ -66,5 +66,9 @@
   {
     "title": "Test Published Mods",
     "path": "../scripts/python/test_unpublished_mods.py"
+  },
+    {
+    "title": "Open Settings",
+    "path": "open_settings.py"
   }
 ]

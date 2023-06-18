@@ -1,8 +1,9 @@
-import subprocess
+import os
 
-package_name = r"Mythical"
-kf2_dir = r"C:\Program Files (x86)\Steam\steamapps\common\killingfloor2\Binaries\Win64"
+package_name = r""
+kf2_dir = r""
 
-subprocess.run(["kfeditor", f"brewcontent -platform=PC {package_name}"], cwd=kf2_dir)
+os.chdir(kf2_dir)
+os.system(f"kfeditor brewcontent -platform=PC {package_name}")
 
 quit()

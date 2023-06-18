@@ -22,7 +22,7 @@ def update_mod_packages(kf_editor_ini, mod_package_names_json):
         file.writelines(lines)
 
 
-kf_editor_ini = "C:/Users/Mythical/Documents/GitHub/kf2_mythical/inis/KFEditor.ini"
+kf_editor_ini = ""
 mod_package_names_json = "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/add_mod_package_ini_entry/mod_package_names.json"
 update_mod_packages(kf_editor_ini, mod_package_names_json)
 

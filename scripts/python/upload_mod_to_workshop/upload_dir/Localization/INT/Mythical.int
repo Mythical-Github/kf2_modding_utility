@@ -1,0 +1,12 @@
+[Archetype.ARCH_Player_Char_StormTrooper]
+CharacterName="Storm Trooper"
+Description="Storm Trooper"
+BodyMesh0="Storm Trooper"
+HeadMesh0="Storm Trooper"
+
+[Archetype.ARCH_Player_Char_StormTrooper.BodyMesh0]
+BodySkin0="Storm Trooper"
+
+
+[Archetype.ARCH_Player_Char_StormTrooper.HeadMesh0]
+HeadSkin0="Storm Trooper"

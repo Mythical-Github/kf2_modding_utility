@@ -2,13 +2,15 @@ import os
 import socket
 import subprocess
 
-
+content_brewer_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\brew_kf2_mods.py"
 workshup_uploader_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\upload_mod_to_workshop_alt_method\upload_mod_to_workshop_alt_method.py"
 open_kf2_to_server_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\open_kf2_to_server.py"
 
 # Host and port of the VPS
 host = ""
-port = 
+port = 0
+
+# subprocess.run(["python", content_brewer_py])
 
 subprocess.run(["python", workshup_uploader_py])
 

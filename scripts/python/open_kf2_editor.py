@@ -1,7 +1,7 @@
 import subprocess
 
-steam_exe = r"C:\Program Files (x86)\Steam\steam.exe"
-steam_app_id = 232150
+steam_exe = r""
+steam_app_id = 0
 
 command = [
     steam_exe,

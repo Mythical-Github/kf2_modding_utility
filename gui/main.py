@@ -5,8 +5,8 @@ import json
 import subprocess
 import os
 
-
-test = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\gui\data.json"
+title = "KF2 Modding Utility'" 
+info_json = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\gui\data.json"
 
 
 def run_script(path):
@@ -17,7 +17,7 @@ def run_script(path):
 
 
 def populate_buttons(layout):
-    with open(test) as json_file:
+    with open(info_json) as json_file:
         data = json.load(json_file)
 
         for item in data:
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     app.setPalette(palette)
 
     window = QWidget()
-    window.setWindowTitle('KF2 Modding Utility')  # Set the new title
+    window.setWindowTitle(title)  # Set the new title
     window.resize(275, 300)  # Adjust the window width as needed
 
     layout = QVBoxLayout()

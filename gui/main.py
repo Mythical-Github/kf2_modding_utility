@@ -63,7 +63,7 @@ class ButtonHoverEventFilter(QObject):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("kf2_icon_alt.png"))
+    app.setWindowIcon(QIcon("kf2_icon_main.png"))
     settings = QSettings("MyCompany", "KF2ModdingUtility")
 
     window = QWidget()

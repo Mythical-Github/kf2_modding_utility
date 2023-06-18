@@ -1,0 +1,70 @@
+[
+  {
+    "title": "Add Mod Package To Ini",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/add_mod_package_ini_entry/add_mod_package_ini_entry.py"
+  },
+  {
+    "title": "Easy Server Testing",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/easy_server_testing/kf2_client_testing.py"
+  },
+  {
+    "title": "Upload Mod To Workshop",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/upload_mod_to_workshop/upload_mod_to_workshop.py"
+  },
+  {
+    "title": "Upload Mod To Workshop Alt Method",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/upload_mod_to_workshop_alt_method/upload_mod_to_workshop_alt_method.py"
+  },
+  {
+    "title": "Brew Mods",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/brew_kf2_mods.py"
+  },
+  {
+    "title": "Compile Mods",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/compile_mods.py"
+  },
+  {
+    "title": "Open Blender",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_blender.py"
+  },
+  {
+    "title": "Open Game",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_kf2.py"
+  },
+  {
+    "title": "Open Game Directory",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_kf2_dir.py"
+  },
+  {
+    "title": "Open Game Documents Directory",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_kf2_docs_dir.py"
+  },
+  {
+    "title": "Open Editor",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_kf2_editor.py"
+  },
+  {
+    "title": "Open Game To Server",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_kf2_to_server.py"
+  },
+  {
+    "title": "Open Umodel",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_umodel.py"
+  },
+  {
+    "title": "Open VPS",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_vps.py"
+  },
+  {
+    "title": "Open Webadmin",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_webadmin.py"
+  },
+  {
+    "title": "Test Published Mods",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/test_published_mods.py"
+  },
+  {
+    "title": "Test Unpublished Mods",
+    "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/test_unpublished_mods.py"
+  }
+]

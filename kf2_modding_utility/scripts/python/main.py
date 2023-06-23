@@ -17,10 +17,12 @@ icon = "..\\..\\images\\kf2_icon_main.png"
 title = "KF2 Modding Utility"
 info_json = "..\\..\\settings\data.json"
 window_position_json = "..\\..\\settings\\window_position.json"
+settings_json = "..\\..\\settings\\settings.json"
 
 icon = os.path.normpath(os.path.join(current_dir, icon))
 info_json = os.path.normpath(os.path.join(current_dir, info_json))
 window_position_json = os.path.normpath(os.path.join(current_dir, window_position_json))
+settings_json = os.path.normpath(os.path.join(current_dir, settings_json))
 
 in_delete_state = False
 
@@ -40,6 +42,13 @@ def show_popup_message(message):
     msg_box.setWindowIcon(QIcon(icon))
     msg_box.setText(message)
     msg_box.exec()
+
+def settings_check():
+    if not os.path.isfile(settings_json):
+        execute_file("make_settings.py")
+        execute_file("open_settings.py")
+        show_popup_message("Make Sure To Configure and Save Any You Plan To Use")
+    return
 
 def open_window_for_text_user_input(window_title_text, window_text):
     app = QApplication([])
@@ -256,4 +265,5 @@ if __name__ == "__main__":
     app.setWindowIcon(QIcon(icon))
     win = ModdingUtility()
     win.show()
+    settings_check()
     sys.exit(app.exec_())

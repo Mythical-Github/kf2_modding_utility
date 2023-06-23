@@ -1,25 +1,57 @@
+import os
 import sys
 import json
 import subprocess
-import webbrowser
 from PyQt5.QtGui import QColor, QLinearGradient, QIcon
-from PyQt5.QtCore import QEvent, QObject, QSettings, QPoint
-from PyQt5.QtWidgets import (
-    QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFileDialog, QInputDialog, QScrollArea,
-    QAction, QMenu
+from PyQt5.QtCore import QEvent, QObject
+from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFileDialog,
+    QInputDialog, QScrollArea, QMessageBox
 )
 
-icon = r"..\..\images\kf2_icon_main.png"
+# This is for debugging, change later
+os.chdir(r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python")
+
+current_dir = os.getcwd()
+
+icon = "..\\..\\images\\kf2_icon_main.png"
 title = "KF2 Modding Utility"
-info_json = r"..\..\settings\data.json"
-window_position_json = r"..\..\settings\window_position.json"
+info_json = "..\\..\\settings\data.json"
+window_position_json = "..\\..\\settings\\window_position.json"
+
+icon = os.path.normpath(os.path.join(current_dir, icon))
+info_json = os.path.normpath(os.path.join(current_dir, info_json))
+window_position_json = os.path.normpath(os.path.join(current_dir, window_position_json))
 
 in_delete_state = False
 
 scrollbox_buttons = []
 
-style_1 = "background: #222222; color: white; border: 1px solid teal;"
-style_2 = "background: #666666; color: white; border: 1px solid teal;"
+color_1 = "color: white; border: 1px solid teal;"
+style_1 = f"background: #222222; {color_1}"
+style_2 = f"background: #666666; {color_1}"
+
+def execute_file(file_path):
+    if not in_delete_state:
+        subprocess.Popen([sys.executable, file_path])
+
+def show_popup_message(message):
+    app = QApplication([])
+    msg_box = QMessageBox()
+    msg_box.setWindowIcon(QIcon(icon))
+    msg_box.setText(message)
+    msg_box.exec()
+
+def open_window_for_text_user_input(window_title_text, window_text):
+    app = QApplication([])
+    app.setWindowIcon(QIcon(icon))
+
+    ok = QInputDialog.getText(None, window_title_text, window_text)
+    if ok[1]:
+        output_text = ok[0]
+    else:
+        output_text = None
+
+    return output_text
 
 def save_window_position_to_json(window):
     position = {
@@ -48,9 +80,15 @@ def load_window_position():
         with open(window_position_json) as file:
             data = file.read().strip()
             if data:
-                return json.loads(data)
+                position = json.loads(data)
+                return position
     except (FileNotFoundError, json.JSONDecodeError):
         return None
+
+def restart_app():
+    os.chdir("..\..")
+    os.system("kf2_modding_utility.py")
+    sys.exit()
 
 class ButtonHoverEventFilter(QObject):
     def __init__(self, button):
@@ -102,15 +140,15 @@ class StyledButton(QPushButton):
 
 def create_button(title, path, highlightable=True):
     button = StyledButton(title, highlightable)
-    button.clicked.connect(open_google)
+    if path:
+        button.clicked.connect(lambda checked, file_path=path: execute_file(file_path))
+        button.clicked.connect(lambda checked, file_path=path: lambda: print(f"Path: {file_path}" if file_path else "Empty file path")())
+    else:
+        button.clicked.connect(lambda: print("Empty file path"))
+    button.clicked.connect(lambda checked, button_title=title: print(f"Clicked button: {button_title}"))
     return button
 
-def open_google():
-    global in_delete_state
-    if not in_delete_state:
-        webbrowser.open("https://www.google.com")
-
-def handle_file_selected(file_path, window):
+def add_new_button(file_path, window):
     if file_path:
         name, ok = QInputDialog.getText(None, "Button Name", "Please Enter New Button Name:")
         if ok:
@@ -121,15 +159,8 @@ def handle_file_selected(file_path, window):
             }
             data.append(new_button)
             save_data_to_json(info_json, data)
-            window_position = {
-                'x': window.x(),
-                'y': window.y(),
-                'width': window.width(),
-                'height': window.height()
-            }
-            save_window_position(window_position)
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            save_window_position_to_json(window)
+            restart_app()
 
 def populate_scrollbox_buttons(layout):
     data = load_data_from_json(info_json)
@@ -144,11 +175,10 @@ def populate_scrollbox_buttons(layout):
     return scrollbox_buttons
 
 def create_top_scrollbox_buttons(layout, scrollbox_buttons):
-    add_and_confirm_button = StyledButton("Add Button", highlightable=False)
+    add_and_confirm_button = StyledButton("Add Button", highlightable=True)
     layout.addWidget(add_and_confirm_button)
     add_and_confirm_button.clicked.connect(on_add_and_confirm_button_clicked)
-
-    remove_and_cancel_button = StyledButton("Remove Button(s)", highlightable=False)
+    remove_and_cancel_button = StyledButton("Remove Button(s)", highlightable=True)
     layout.addWidget(remove_and_cancel_button)
     remove_and_cancel_button.clicked.connect(lambda: toggle_confirm_button(add_and_confirm_button, remove_and_cancel_button))
     remove_and_cancel_button.clicked.connect(lambda: toggle_cancel_button(remove_and_cancel_button, scrollbox_buttons))
@@ -173,8 +203,7 @@ def toggle_confirm_button(add_and_confirm_button, remove_and_cancel_button):
                 'height': win.height()
             }
             save_window_position(window_position)
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            restart_app()
 
 def toggle_cancel_button(remove_and_cancel_button, scrollbox_buttons):
     if remove_and_cancel_button.text() == "Remove Button(s)":
@@ -183,18 +212,6 @@ def toggle_cancel_button(remove_and_cancel_button, scrollbox_buttons):
         remove_and_cancel_button.setText("Remove Button(s)")
         for button in scrollbox_buttons:
             button.setStylesheet()
-
-def move_button_up(button):
-    layout = button.parent()
-    index = layout.indexOf(button)
-    if index > 0:
-        layout.insertLayout(index - 1, layout.takeAt(index))
-
-def move_button_down(button):
-    layout = button.parent()
-    index = layout.indexOf(button)
-    if index < layout.count() - 1:
-        layout.insertLayout(index + 1, layout.takeAt(index))
 
 class ModdingUtility(QWidget):
     def __init__(self):
@@ -242,13 +259,19 @@ def on_add_and_confirm_button_clicked():
                 if item['title'] == button.text():
                     data.remove(item)
         save_data_to_json(info_json, data)
-        subprocess.Popen([sys.executable] + sys.argv)
-        sys.exit()
+        window_position = {
+            'x': win.x(),
+            'y': win.y(),
+            'width': win.width(),
+            'height': win.height()
+        }
+        save_window_position(window_position)
+        restart_app()
     else:
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         file_path, _ = QFileDialog.getOpenFileName(None, "Select File", "", "Python Files (*.py);;All Files (*)", options=options)
-        handle_file_selected(file_path, win)
+        add_new_button(file_path, win)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

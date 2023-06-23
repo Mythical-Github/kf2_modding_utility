@@ -4,14 +4,14 @@ import socket
 import subprocess
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-settings_json = os.path.join(script_dir, '..', '..', 'settings', 'settings.json')
+settings_json = os.path.join(script_dir, '..', '..', '..', 'settings', 'settings.json')
 
 with open(settings_json) as file:
     data = json.load(file)
 
-content_brewer_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\brew_kf2_mods.py"
-workshup_uploader_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\upload_mod_to_workshop_alt_method\upload_mod_to_workshop_alt_method.py"
-open_kf2_to_server_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\open_kf2_to_server.py"
+content_brewer_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python\brew_kf2_mods.py"
+workshup_uploader_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python\upload_mod_to_workshop_alt_method\upload_mod_to_workshop_alt_method.py"
+open_kf2_to_server_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python\open_kf2_to_server.py"
 
 host = data["kf2_server_ip"]
 port = data["easy_testing_port"]

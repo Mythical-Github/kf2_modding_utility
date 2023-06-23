@@ -1,9 +1,8 @@
-import os
 import json
 import subprocess
+from pathlib import Path
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-settings_json = os.path.join(script_dir, '..', '..', 'settings', 'settings.json')
+settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
 
 with open(settings_json) as file:
     data = json.load(file)
@@ -18,6 +17,6 @@ command = [
     "-NoGADWarning"
 ]
 
-subprocess.run(command)
+subprocess.Popen(command)
 
 quit()

@@ -1,75 +1,79 @@
 [
     {
         "title": "Open Game",
-        "path": "../scripts/python/open_kf2.py"
+        "path": "open_kf2.py"
     },
     {
         "title": "Open Game To Server",
-        "path": "../scripts/python/open_kf2_to_server.py"
+        "path": "open_kf2_to_server.py"
     },
     {
         "title": "Open Game Directory",
-        "path": "../scripts/python/open_kf2_dir.py"
+        "path": "open_kf2_dir.py"
     },
     {
         "title": "Open Game Documents Directory",
-        "path": "../scripts/python/open_kf2_docs_dir.py"
+        "path": "open_kf2_docs_dir.py"
+    },
+    {
+        "title": "Open KF2 Modding Utility Dir",
+        "path": "open_kf2_modding_utility_dir.py"
     },
     {
         "title": "Open Editor",
-        "path": "../scripts/python/open_kf2_editor.py"
+        "path": "open_kf2_editor.py"
     },
     {
         "title": "Open IDE",
-        "path": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/scripts/python/open_ide.py"
+        "path": "open_ide.py"
     },
     {
         "title": "Add Mod Package To Ini",
-        "path": "../scripts/python/add_mod_package_ini_entry/add_mod_package_ini_entry.py"
+        "path": "add_mod_package_ini_entry/add_mod_package_ini_entry.py"
     },
     {
         "title": "Open Blender",
-        "path": "../scripts/python/open_blender.py"
+        "path": "open_blender.py"
     },
     {
         "title": "Open Umodel",
-        "path": "../scripts/python/open_umodel.py"
+        "path": "open_umodel.py"
     },
     {
         "title": "Open Webadmin",
-        "path": "../scripts/python/open_webadmin.py"
+        "path": "open_webadmin.py"
     },
     {
         "title": "Open VPS",
-        "path": "../scripts/python/open_vps.py"
+        "path": "open_vps.py"
     },
     {
         "title": "Compile Mods",
-        "path": "../scripts/python/compile_mods.py"
+        "path": "compile_mods.py"
     },
     {
         "title": "Brew Mods",
-        "path": "../scripts/python/brew_kf2_mods.py"
+        "path": "brew_kf2_mods.py"
     },
     {
         "title": "Test Unpublished Mods",
-        "path": "../scripts/python/test_published_mods.py"
+        "path": "test_published_mods.py"
     },
     {
         "title": "Test Published Mods",
-        "path": "../scripts/python/test_unpublished_mods.py"
+        "path": "test_unpublished_mods.py"
     },
     {
         "title": "Test Mods On Server",
-        "path": "../scripts/python/easy_server_testing/kf2_client_testing.py"
+        "path": "easy_server_testing/kf2_client_testing.py"
     },
     {
         "title": "Upload Mod To Workshop",
-        "path": "../scripts/python/upload_mod_to_workshop/upload_mod_to_workshop.py"
+        "path": "upload_mod_to_workshop/upload_mod_to_workshop.py"
     },
     {
         "title": "Upload Mod To Workshop Alt Method",
-        "path": "../scripts/python/upload_mod_to_workshop_alt_method/upload_mod_to_workshop_alt_method.py"
+        "path": "upload_mod_to_workshop_alt_method/upload_mod_to_workshop_alt_method.py"
     },
     {
         "title": "Open Settings",

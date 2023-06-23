@@ -1,7 +1,7 @@
 import json
 
-data = {
-    "kf2_server_ip": "23.105.148.17",
+data_2 = {
+    "kf2_server_ip": "127.0.0.1",
     "mod_package_name": "Mythical",
     "mod_game_mode": "KFGameInfo_Mythical",
     "mod_map_name": "KF-ZedsDiner",
@@ -23,10 +23,11 @@ data = {
     "mod_vdf": r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\upload_mod_to_workshop_alt_method\Mod.vdf",
     "upload_info_text": r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\upload_mod_to_workshop\upload_info.txt",
     "upload_dir": r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\upload_dir",
-    "thumbnail_image": r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\scripts\python\upload_mod_to_workshop_alt_method\Testing.png",
-    "kf_editor_ini": r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\inis\KFEditor.ini",
-    "ide_exe": "C:\\Users\\Mythical\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+    "thumbnail_image": r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\Images\Testing.png",
+    "kf_editor_ini": r"C:\Users\Mythical\Documents\My Games\KillingFloor2\KFGame\Config\KFEditor.ini",
+    "ide_exe": "C:\\Users\\Mythical\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "icon_path": "C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\kf2_modding_utility\\images\\kf2_icon_main.png"
 }
 
-with open('..\..\settings\settings.json', 'w') as file:
-    json.dump(data, file, indent=4)
+with open('..\..\settings\settings.json', 'w') as file_2:
+    json.dump(data_2, file_2, indent=4)

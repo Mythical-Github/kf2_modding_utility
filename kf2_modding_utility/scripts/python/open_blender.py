@@ -1,20 +1,14 @@
-import os
 import json
 import subprocess
+from pathlib import Path
 
-# Get the absolute path of the current script file
-script_dir = os.path.dirname(os.path.abspath(__file__))
+settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
 
-# Construct the relative path to settings.json
-settings_json = os.path.join(script_dir, '..', '..', 'settings', 'settings.json')
-
-# Load JSON data from settings.json
 with open(settings_json) as file:
     data = json.load(file)
 
 blender_exe = data["blender_exe"]
 
-# Run the blender_exe subprocess
-subprocess.run([blender_exe])
+subprocess.Popen([blender_exe])
 
 quit()

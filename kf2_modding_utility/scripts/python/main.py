@@ -26,9 +26,10 @@ in_delete_state = False
 
 scrollbox_buttons = []
 
-color_1 = "color: white; border: 1px solid teal;"
-style_1 = f"background: #222222; {color_1}"
-style_2 = f"background: #666666; {color_1}"
+color_1 = "color: white; border: 1px solid teal"
+style_1 = f"background: #222222; {color_1};"
+style_2 = f"background: #666666; {color_1};"
+background_1 = "background-color: #111111;"
 
 def execute_file(file_path):
     if not in_delete_state:
@@ -67,7 +68,7 @@ def load_data_from_json(json_file):
         return json.load(file)
 
 def save_data_to_json(json_file, data):
-    with open(json_file, 'w') as file:
+    with open(json_file, "w") as file:
         json.dump(data, file, indent=4)
 
 def load_window_position():
@@ -131,7 +132,7 @@ class StyledButton(QPushButton):
             pos = 1 - stop[0]
             gradient_str += f" stop: {pos} {color},"
         gradient_str = gradient_str.rstrip(",") + ")"
-        self.original_style = f"background: {gradient_str}; color: white; border: 1px solid teal;"
+        self.original_style = f"background: {gradient_str}; {color_1};"
         self.setStyleSheet(self.original_style)
 
 def create_button(title, path, highlightable=True):
@@ -144,7 +145,7 @@ def create_button(title, path, highlightable=True):
     button.clicked.connect(lambda checked, button_title=title: print(f"Clicked button: {button_title}"))
     return button
 
-def add_new_button(file_path, window):
+def add_new_button(file_path):
     if file_path:
         name, ok = QInputDialog.getText(None, "Button Name", "Please Enter New Button Name:")
         if ok:
@@ -205,7 +206,7 @@ class ModdingUtility(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle(title)
-        self.setStyleSheet("background-color: #111111;")
+        self.setStyleSheet(background_1)
         layout = QVBoxLayout(self)
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
@@ -221,9 +222,11 @@ class ModdingUtility(QWidget):
         self.setLayout(layout)
         window_position = load_window_position()
         if window_position:
-            self.setGeometry(window_position['x'], window_position['y'], window_position['width'], window_position['height'])
+            self.move(window_position['x'], window_position['y'])
+            self.setFixedSize(window_position['width'], window_position['height'])
         else:
-            self.resize(400, 300)
+            self.move(window_position[0], window_position[0])
+            self.setFixedSize(275, 400)
 
     def closeEvent(self, event):
         save_window_position_to_json()

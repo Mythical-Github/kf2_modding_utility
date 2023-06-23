@@ -35,7 +35,6 @@ def execute_file(file_path):
         subprocess.Popen([sys.executable, file_path])
 
 def show_popup_message(message):
-    app = QApplication([])
     msg_box = QMessageBox()
     msg_box.setWindowIcon(QIcon(icon))
     msg_box.setText(message)
@@ -53,12 +52,12 @@ def open_window_for_text_user_input(window_title_text, window_text):
 
     return output_text
 
-def save_window_position_to_json(window):
+def save_window_position_to_json():
     position = {
-        'x': window.x(),
-        'y': window.y(),
-        'width': window.width(),
-        'height': window.height()
+        'x': win.x(),
+        'y': win.y(),
+        'width': win.width(),
+        'height': win.height()
     }
     with open(window_position_json, "w") as file:
         json.dump(position, file)
@@ -71,10 +70,6 @@ def save_data_to_json(json_file, data):
     with open(json_file, 'w') as file:
         json.dump(data, file, indent=4)
 
-def save_window_position(position):
-    with open(window_position_json, "w") as file:
-        json.dump(position, file)
-
 def load_window_position():
     try:
         with open(window_position_json) as file:
@@ -86,6 +81,7 @@ def load_window_position():
         return None
 
 def restart_app():
+    save_window_position_to_json()
     os.chdir("..\..")
     os.system("kf2_modding_utility.py")
     sys.exit()
@@ -159,7 +155,6 @@ def add_new_button(file_path, window):
             }
             data.append(new_button)
             save_data_to_json(info_json, data)
-            save_window_position_to_json(window)
             restart_app()
 
 def populate_scrollbox_buttons(layout):
@@ -196,13 +191,6 @@ def toggle_confirm_button(add_and_confirm_button, remove_and_cancel_button):
         if remove_and_cancel_button.isChecked():
             data = load_data_from_json(info_json)
             save_data_to_json(info_json, data)
-            window_position = {
-                'x': win.x(),
-                'y': win.y(),
-                'width': win.width(),
-                'height': win.height()
-            }
-            save_window_position(window_position)
             restart_app()
 
 def toggle_cancel_button(remove_and_cancel_button, scrollbox_buttons):
@@ -238,13 +226,7 @@ class ModdingUtility(QWidget):
             self.resize(400, 300)
 
     def closeEvent(self, event):
-        window_position = {
-            'x': self.x(),
-            'y': self.y(),
-            'width': self.width(),
-            'height': self.height()
-        }
-        save_window_position(window_position)
+        save_window_position_to_json()
         event.accept()
 
 def on_add_and_confirm_button_clicked():
@@ -259,13 +241,6 @@ def on_add_and_confirm_button_clicked():
                 if item['title'] == button.text():
                     data.remove(item)
         save_data_to_json(info_json, data)
-        window_position = {
-            'x': win.x(),
-            'y': win.y(),
-            'width': win.width(),
-            'height': win.height()
-        }
-        save_window_position(window_position)
         restart_app()
     else:
         options = QFileDialog.Options()

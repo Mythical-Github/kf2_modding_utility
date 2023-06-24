@@ -1,34 +1,19 @@
-add to setting button (ask for new line to add to make settings ini, settings.json, and it's default value)
-fix other workshop upload methos
-make mod uploaders auto pull from json to put into the info and mod vdf because they need full and not relative paths
-all testing mods confiruable, load from json a list of mutators, if game mode, etc...
 fix client testing py
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-later:
-clean main py
 kf2 editor commandlets stuff (fix up redirectors?)
-install python if not already there prompt
-Server Side Related:
-allow port restarter to only accept ip specified in config file on the vps machine
-updat server button
-make update server py
+
+make mod uploaders auto pull from json to put into the info and mod vdf because they need full and not relative paths
+
+all testing mods confiruable, load from json a list of mutators, if game mode, etc...
+
+
 draggable buttons
-clean all the codes to be pep 8ss
+add to setting button (ask for new line to add to make settings ini, settings.json, and it's default value)
+
+Server Side Related:
+Authentication For Running Commands
+new server buttons client side
+new server scripts server side
+
+Last:
+Full Cleanup
+Documentation/Tutorials

@@ -16,11 +16,9 @@ open_kf2_to_server_py = r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_mo
 host = data["kf2_server_ip"]
 port = data["easy_testing_port"]
 
-# subprocess.run(["python", content_brewer_py])
-
 subprocess.run(["python", workshup_uploader_py])
 
-command_to_send = 'run_command'
+command_to_send = 'restart_server'
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

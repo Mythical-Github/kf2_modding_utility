@@ -47,7 +47,7 @@ def settings_check():
     if not os.path.isfile(settings_json):
         execute_file("make_settings.py")
         execute_file("open_settings.py")
-        show_popup_message("Make Sure To Configure and Save Any You Plan To Use")
+        show_popup_message("Please Configure And Save")
     return
 
 def open_window_for_text_user_input(window_title_text, window_text):
@@ -258,7 +258,7 @@ def on_add_and_confirm_button_clicked():
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         file_path, _ = QFileDialog.getOpenFileName(None, "Select File", "", "Python Files (*.py);;All Files (*)", options=options)
-        add_new_button(file_path, win)
+        add_new_button(file_path)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

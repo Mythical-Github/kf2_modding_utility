@@ -11,7 +11,7 @@ with open(settings_json) as file:
 host = data["kf2_server_ip"]
 port = data["easy_testing_port"]
 
-command_to_send = "update_server"
+command_to_send = "start_server"
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

@@ -65,7 +65,7 @@
     },
     {
         "title": "Test Mods On Server",
-        "path": "easy_server_testing/kf2_client_testing.py"
+        "path": "easy_server_testing/kf2_server_testing_client.py"
     },
     {
         "title": "Upload Mod To Workshop",

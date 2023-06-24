@@ -1,5 +1,0 @@
-crouch sliding
-dodge rolling
-grenade cooking
-custom character mutator (they exist already but not on their own)
-player shadows

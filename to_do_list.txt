@@ -19,5 +19,5 @@ Make Server Scripts Have Settings Generation And Run From Settings
 
 Last:
 Poetry Setup
-Full Cleanup (Pull Reusable Functions Into Main.py)
+Full Cleanup
 Documentation/Tutorials

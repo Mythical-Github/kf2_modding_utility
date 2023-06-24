@@ -9,8 +9,8 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QP
 )
 
 # This is for debugging, change later
-os.chdir(r"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python")
-
+os.chdir(r"C:\Users\Mythical\Documents\GitHub\kf2_modding_utility\kf2_modding_utility_client\scripts\python")
+main_py = "kf2_modding_utility_client.py"
 current_dir = os.getcwd()
 
 icon = "..\\..\\images\\kf2_icon_main.png"
@@ -93,7 +93,7 @@ def load_window_position():
 def restart_app():
     save_window_position_to_json()
     os.chdir("..\..")
-    os.system("kf2_modding_utility.py")
+    os.system(main_py)
     sys.exit()
 
 class ButtonHoverEventFilter(QObject):

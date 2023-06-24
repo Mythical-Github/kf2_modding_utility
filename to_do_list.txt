@@ -1,19 +1,17 @@
-fix client testing py
-kf2 editor commandlets stuff (fix up redirectors?)
-
-make mod uploaders auto pull from json to put into the info and mod vdf because they need full and not relative paths
-
-all testing mods confiruable, load from json a list of mutators, if game mode, etc...
-
-
-draggable buttons
-add to setting button (ask for new line to add to make settings ini, settings.json, and it's default value)
+General:
+Fix And Clean Up kf2_server_testing_client.py
+Being Able To Drag And Drop Reorder The Scroll Box buttons
+Add To Settings Button (Var Name, Default Value, Adds To make_settings.py, Adds To settings.json)
+KF2 Editor Commandlet Buttons
+Have Mod Uploaders, Pull Info From Json, and Repopulate mod.vdf and upload_info.txt On The Fly With Full File Paths
+Have Mod Testing Method Arguments By On The Fly Populated From Json
+Fix Not Being Able To Resize Application
 
 Server Side Related:
 Authentication For Running Commands
-new server buttons client side
-new server scripts server side
+Make Server Scripts Have Settings Generation And Run From Settings
 
 Last:
+Poetry Setup
 Full Cleanup
 Documentation/Tutorials

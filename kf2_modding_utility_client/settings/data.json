@@ -76,6 +76,22 @@
         "path": "upload_mod_to_workshop_alt_method/upload_mod_to_workshop_alt_method.py"
     },
     {
+        "title": "Start Server",
+        "path": "easy_server_testing/kf2_start_server.py"
+    },
+    {
+        "title": "Close Server",
+        "path": "easy_server_testing/kf2_close_server.py"
+    },
+    {
+        "title": "Update Server",
+        "path": "easy_server_testing/kf2_update_server.py"
+    },
+    {
+        "title": "Restart Server",
+        "path": "easy_server_testing/kf2_restart_server.py"
+    },
+    {
         "title": "Open Settings",
         "path": "open_settings.py"
     }

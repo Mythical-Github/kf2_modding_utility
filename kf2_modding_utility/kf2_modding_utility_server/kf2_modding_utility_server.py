@@ -1,11 +1,13 @@
 import os
-import sys
 import subprocess
 
-script_directory = os.path.dirname(os.path.abspath(sys.argv[0]))
+def main():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(script_dir)
+    
+    py_to_run = os.path.join(script_dir, "scripts", "python", "main.py")
 
-py_to_run = f"{script_directory}/scripts/python/main.py"
+    subprocess.Popen(["python", py_to_run])
 
-subprocess.Popen(["python", py_to_run])
-
-quit()
+if __name__ == "__main__":
+    main()

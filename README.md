@@ -22,8 +22,6 @@ Use Poetry to install
   
 <h2>💻 Built with</h2>
 
-Technologies used in the project:
-
 *   Python
 *   PyQt5
 

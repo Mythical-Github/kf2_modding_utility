@@ -9,7 +9,7 @@
 *   Fast Modding Workflow
 *   Server Management Utilities
 *   Workshop Uploading Utilities
-*   Modular Buttons
+*   Modular Button Lists
 *   KF2 Themed
 
 <h2>🛠️ Installation Steps:</h2>

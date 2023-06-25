@@ -4,7 +4,7 @@ Easy To Use Modding Utility For [Killing Floor 2](https://store.steampowered.com
 
 <h2>Project Example:</h2>
 
-<img src="https://cdn.discordapp.com/attachments/1121513483532513441/1122342228401082439/example.png" alt="project-screenshot" width="356" height="430/">
+<img src="https://cdn.discordapp.com/attachments/1121513483532513441/1122349850424508436/example.gif" alt="project-screenshot">
   
 <h2>💪 Features</h2>
 

@@ -1,3 +1,4 @@
+import sys
 import json
 import subprocess
 from pathlib import Path
@@ -12,4 +13,4 @@ steam_exe = data["steam_exe"]
 
 subprocess.Popen([steam_exe, "-applaunch", str(steam_app_id)])
 
-quit()
+ssysy.exit()

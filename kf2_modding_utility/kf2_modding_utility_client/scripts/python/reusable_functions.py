@@ -15,6 +15,7 @@ def open_file_browser_to_dir(dir_path):
     else:
         print("Directory path is invalid or doesn't exist.")
 
+
 def get_settings_value(input_key):
     settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
     with open(settings_json) as file:
@@ -22,4 +23,5 @@ def get_settings_value(input_key):
     output_value = data[input_key]
     return output_value
 
-quit()
+
+sys.exit()

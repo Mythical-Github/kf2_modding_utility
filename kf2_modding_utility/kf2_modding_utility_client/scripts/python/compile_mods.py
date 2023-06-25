@@ -1,3 +1,4 @@
+import sys
 import json
 import subprocess
 from pathlib import Path
@@ -14,4 +15,4 @@ kf2_dir = Path(part_a) / part_b
 
 subprocess.Popen([kf2_dir / "kfeditor.exe", "make"])
 
-quit()
+sys.exit()

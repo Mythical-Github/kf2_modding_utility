@@ -15,7 +15,16 @@
 <h2>🛠️ Installation Steps:</h2>
 
 ```
-Use Poetry to install
+pip install poetry
+```
+```
+cd project_dir
+```
+```
+poetry install
+```
+```
+poetry run kf2_modding_utility_client.py
 ```
 
   

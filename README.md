@@ -24,6 +24,9 @@ cd project_dir
 poetry install
 ```
 ```
+cd kf2_modding_utility/kf2_modding_utility_client
+```
+```
 poetry run kf2_modding_utility_client.py
 ```
 

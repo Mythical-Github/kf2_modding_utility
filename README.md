@@ -17,9 +17,6 @@ Easy To Use Modding Utility For [Killing Floor 2](https://store.steampowered.com
 <h2>🛠️ Installation Steps:</h2>
 
 ```
-pip install poetry
-```
-```
 pip install "git+https://github.com/Mythical-Github/kf2_modding_utility.git"
 ```
 

@@ -23,14 +23,15 @@ cd project_dir
 ```
 poetry install
 ```
-```
-cd kf2_modding_utility/kf2_modding_utility_client
-```
-```
-poetry run kf2_modding_utility_client.py
-```
 
-  
+<h2>🏃 Running Steps:</h2>
+
+```
+kf2_modding_utility_client.py
+```
+```
+kf2_modding_utility_server.py
+```  
   
 <h2>💻 Built with</h2>
 

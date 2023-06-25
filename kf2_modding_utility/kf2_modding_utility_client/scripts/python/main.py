@@ -105,9 +105,11 @@ def load_window_position():
 
 def restart_app():
     save_window_position_to_json()
+    win.close()  # Close the current window
     os.chdir("../..")
     os.system(main_py)
-    sys.exit()
+    quit()
+
 
 
 class ButtonHoverEventFilter(QObject):

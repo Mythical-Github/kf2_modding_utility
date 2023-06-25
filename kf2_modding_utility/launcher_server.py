@@ -1,5 +1,5 @@
 import sys
-from kf2_modding_utility.kf2_modding_utility_server import kf2_modding_utility_server
+from kf2_modding_utility_server import kf2_modding_utility_server
 
 
 def main():

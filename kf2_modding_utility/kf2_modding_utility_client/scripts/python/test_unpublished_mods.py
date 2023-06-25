@@ -1,3 +1,4 @@
+import sys
 import json
 import subprocess
 from pathlib import Path
@@ -25,4 +26,4 @@ command = [
 
 subprocess.Popen(command)
 
-quit()
+sys.exit()

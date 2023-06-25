@@ -1,3 +1,4 @@
+import sys
 import json
 import subprocess
 from pathlib import Path
@@ -11,4 +12,4 @@ blender_exe = data["blender_exe"]
 
 subprocess.Popen([blender_exe])
 
-quit()
+sys.exit()

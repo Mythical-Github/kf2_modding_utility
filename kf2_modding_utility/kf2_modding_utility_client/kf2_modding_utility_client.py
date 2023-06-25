@@ -1,10 +1,6 @@
-import subprocess
-from pathlib import Path
+import os
 
-py_file_dir = Path("scripts/python").resolve()
+os.chdir("scripts/python")
+os.system(f"poetry run python main.py")
 
-if __name__ == "__main__":
-    subprocess.Popen(["python", str(py_file_dir / "main.py")],
-                     creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NO_WINDOW,
-                     close_fds=True,
-                     cwd=str(py_file_dir))
+quit()

@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import json
 import subprocess
 from PyQt5.QtGui import QColor, QLinearGradient, QIcon

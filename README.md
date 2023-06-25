@@ -42,4 +42,4 @@ kf2_modding_utility_server.py
 
 <h2>🛡️ License:</h2>
 
-This project is licensed under the [GNU General Public License v3.0](https://github.com/Mythical-Github/kf2_modding_utility/blob/main/LICENSE)
+[![license](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)](LICENSE)

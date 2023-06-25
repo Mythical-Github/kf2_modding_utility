@@ -1,11 +1,11 @@
 "workshopitem"
 {
 	"appid"		"232090"
-	"publishedfileid"		"2990314832"
-	"contentfolder"		"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python\upload_mod_to_workshop_alt_method\mod_upload_dir"
-	"previewfile"		"C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python\upload_mod_to_workshop_alt_method\Testing.png"
-	"visibility"		"0"
-	"title"		"Mythical_Testing_Alt"
-	"description"		"Mythical Testing Alt Description"
-	"changenote"		""
+	"publishedfileid" "2990314832"
+	"contentfolder" "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python/upload_mod_to_workshop_alt_method/mod_upload_dir"
+	"previewfile" "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python/upload_mod_to_workshop_alt_method/Testing.png"
+	"visibility" "0"
+	"title" "Mythical_Testing_Alt_1"
+	"description" "Mythical Testing Alt Description"
+	"changenote" "Workshop Item Changenote Description"
 }

@@ -28,7 +28,16 @@ data_2 = {
     "thumbnail_image": r"C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\Images\\Testing.png",
     "kf_editor_ini": r"C:\\Users\\Mythical\\Documents\\My Games\\KillingFloor2\\KFGame\\Config\\KFEditor.ini",
     "ide_exe": "C:\\Users\\Mythical\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
-    "icon_path": "C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\kf2_modding_utility\\images\\kf2_icon_main.png"
+    "icon_path": "C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\kf2_modding_utility\\images\\kf2_icon_main.png",
+    "publishedfileid": "0",
+    "contentfolder": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python"
+                     "/upload_mod_to_workshop_alt_method/mod_upload_dir",
+    "previewfile": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python"
+                   "/upload_mod_to_workshop_alt_method/Testing.png",
+    "visibility": "0",
+    "title": "Workshop Item Title Name",
+    "description": "Workshop Item Description",
+    "changenote": "Workshop Item Changenote Description"
 }
 
 with open('..\\..\\settings\\settings.json', 'w') as file_2:

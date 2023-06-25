@@ -1,6 +1,6 @@
 <h1 id="title" align="center">kf2_modding_utility</h1>
 
-<p id="description">Easy To Use KF2 Modding Utility</p>
+Easy To Use Modding Utility For [Killing Floor 2](https://store.steampowered.com/agecheck/app/232090/)
 
   
   
@@ -8,9 +8,9 @@
 
 *   Fast Modding Workflow
 *   Server Management Utilities
-*   Workshop Uploading Utilities
+*   Steam Workshop Uploading Utilities
 *   Modular Button Lists
-*   KF2 Themed
+*   Killing Floor 2 Themed
 
 <h2>🛠️ Installation Steps:</h2>
 
@@ -40,4 +40,4 @@ kf2_modding_utility_server.py
 
 <h2>🛡️ License:</h2>
 
-This project is licensed under the GNU General Public License v3.0
+This project is licensed under the [GNU General Public License v3.0](https://github.com/Mythical-Github/kf2_modding_utility/blob/main/LICENSE)

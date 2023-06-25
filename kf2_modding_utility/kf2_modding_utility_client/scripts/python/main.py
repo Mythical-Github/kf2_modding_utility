@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QP
                              QInputDialog, QScrollArea, QMessageBox
                              )
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_dir)
 
 main_py = "kf2_modding_utility_client.py"
 

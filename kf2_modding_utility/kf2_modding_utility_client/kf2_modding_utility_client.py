@@ -1,6 +1,10 @@
 import os
+import sys
+import time
 
-os.chdir("scripts/python")
-os.system(f"poetry run python main.py")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_dir)
 
-quit()
+os.system("python scripts/python/main.py")
+
+sys.exit()

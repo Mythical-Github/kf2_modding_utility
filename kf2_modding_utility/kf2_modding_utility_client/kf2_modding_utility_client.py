@@ -1,10 +1,10 @@
-import subprocess
-from pathlib import Path
+import os
+import sys
+import time
 
-py_file_dir = Path("scripts/python").resolve()
+script_dir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_dir)
 
-if __name__ == "__main__":
-    subprocess.Popen(["python", str(py_file_dir / "main.py")],
-                     creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NO_WINDOW,
-                     close_fds=True,
-                     cwd=str(py_file_dir))
+os.system("python scripts/python/main.py")
+
+sys.exit()

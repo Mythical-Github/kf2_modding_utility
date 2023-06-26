@@ -23,10 +23,16 @@ pip install "git+https://github.com/Mythical-Github/kf2_modding_utility.git"
 <h2>🏃 Running Steps:</h2>
 
 ```
-python -m kf2_modding_utility.launcher_client
+python -m kf2_modding_utility.launch_client
 ```
 ```
-python -m kf2_modding_utility.launcher_server
+python -m kf2_modding_utility.launch_server
+```
+
+<h2>☝️ Updating Steps:</h2>
+
+```
+pip install --upgrade "git+https://github.com/Mythical-Github/kf2_modding_utility.git"
 ```
 
 <h2>💻 Built with</h2>

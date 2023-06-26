@@ -1,5 +1,5 @@
 import json
-import subprocess
+import os
 import sys
 from pathlib import Path
 
@@ -12,9 +12,9 @@ dir_path = data["kf2_docs_dir"]
 
 if Path(dir_path).is_dir():
     if sys.platform.startswith('win'):
-        subprocess.run(['explorer', dir_path], shell=True)
+        os.startfile(dir_path)
     elif sys.platform.startswith('linux'):
-        subprocess.run(['xdg-open', dir_path])
+        os.system(f'xdg-open "{dir_path}"')
     else:
         print("Unsupported platform.")
 else:

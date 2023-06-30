@@ -27,7 +27,7 @@ with open(map_name_settings) as file:
 mutators_line = ""
 
 steam_exe = data["steam_exe"]
-steam_app_id = dev_data["game_steam_app_id"]
+steam_app_id = 232090
 
 if mutators_data['mutators'][0] == "" or mutators_data['mutators'][0] is None:
     print("test")
@@ -53,24 +53,14 @@ else:
 
 game_mode = f"game={game_mode}"
 
-map_name_key = "map_name"  # Add a variable to hold the key for map_name
-
-map_name = map_name_data[map_name_key][0]  # Access value using the correct variable
+map_name = map_name_data["map_name"][0]  # Access value using the correct variable
 
 if map_name == "" or map_name is None:
-    map_name = "KF-BioticsLab"
+    map_name = "KF-BioticsLab?"
 
-command = [
-    steam_exe,
-    "-applaunch",
-    str(steam_app_id),
-    map_name,
-    game_mode,
-    mutators_line,
-    "-log",
-    "-useunpublished"
-]
-
-subprocess.Popen(command)
+if not map_name == "KF-BioticsLab?":
+    map_name = f"{map_name}?"
+    
+subprocess.Popen(f"{steam_exe} -applaunch {str(steam_app_id)} {map_name}{game_mode}{mutators_line} -log -useunpublished")
 
 sys.exit()

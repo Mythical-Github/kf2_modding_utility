@@ -1,8 +1,7 @@
 
 To Fix:
-Test Published Mods
-Test Unpublished Mods
 Upload Mod To Workshop Normal Method
+Testing Mods On Server
 
 To Add:
 Client/Server Settings Panel

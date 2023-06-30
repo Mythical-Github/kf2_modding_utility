@@ -1,0 +1,98 @@
+[
+    {
+        "title": "Open Game",
+        "path": "open_kf2.py"
+    },
+    {
+        "title": "Open Game To Server",
+        "path": "open_kf2_to_server.py"
+    },
+    {
+        "title": "Open Game Directory",
+        "path": "open_kf2_dir.py"
+    },
+    {
+        "title": "Open Game Documents Directory",
+        "path": "open_kf2_docs_dir.py"
+    },
+    {
+        "title": "Open KF2 Modding Utility Dir",
+        "path": "open_kf2_modding_utility_dir.py"
+    },
+    {
+        "title": "Open Editor",
+        "path": "open_kf2_editor.py"
+    },
+    {
+        "title": "Open IDE",
+        "path": "open_ide.py"
+    },
+    {
+        "title": "Add Mod Package To Ini",
+        "path": "add_mod_package_ini_entry.py"
+    },
+    {
+        "title": "Open Blender",
+        "path": "open_blender.py"
+    },
+    {
+        "title": "Open Umodel",
+        "path": "open_umodel.py"
+    },
+    {
+        "title": "Open Webadmin",
+        "path": "open_webadmin.py"
+    },
+    {
+        "title": "Open VPS",
+        "path": "open_vps.py"
+    },
+    {
+        "title": "Compile Mods",
+        "path": "compile_mods.py"
+    },
+    {
+        "title": "Brew Mods",
+        "path": "brew_kf2_mods.py"
+    },
+    {
+        "title": "Test Unpublished Mods",
+        "path": "test_unpublished_mods.py"
+    },
+    {
+        "title": "Test Published Mods",
+        "path": "test_published_mods.py"
+    },
+    {
+        "title": "Test Mods On Server",
+        "path": "test_mods_on_game_server.py"
+    },
+    {
+        "title": "Upload Mod To Workshop",
+        "path": "upload_mod_to_workshop.py"
+    },
+    {
+        "title": "Upload Mod To Workshop Alt Method",
+        "path": "upload_mod_to_workshop_alt_method.py"
+    },
+    {
+        "title": "Start Server",
+        "path": "start_game_server.py"
+    },
+    {
+        "title": "Close Server",
+        "path": "close_game_server.py"
+    },
+    {
+        "title": "Update Server",
+        "path": "update_game_server.py"
+    },
+    {
+        "title": "Restart Server",
+        "path": "restart_game_server.py"
+    },
+    {
+        "title": "Open Settings",
+        "path": "open_settings.py"
+    }
+]

@@ -80,7 +80,7 @@ if not (difficulty == "" or difficulty is None):
 match_length = match_length_data["match_length"][0]
 
 if not (match_length == "" or match_length is None):
-    match_length = f"match_length={match_length}?"
+    match_length = f"length={match_length}?"
     
 seasonal_zeds = seasonal_zeds_data["seasonal_zeds"][0]
 

@@ -9,29 +9,20 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QP
                              QInputDialog, QScrollArea, QMessageBox
                              )
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-os.chdir(script_dir)
 
-main_py = "kf2_modding_utility_client.py"
-
-
+TITLE = "KF2 Modding Utility"
+LAUNCHER_PY = "kf2_modding_utility_client.py"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
 current_dir = os.getcwd()
+ICON = os.path.normpath(os.path.join(current_dir, "..\\..\\images\\kf2_icon_main.png"))
+INFO_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\button_data.json"))
+WINDOW_POSITION_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\window_position.json"))
+SETTINGS_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\settings.json"))
 
-icon = "..\\..\\images\\kf2_icon_main.png"
-title = "KF2 Modding Utility"
-info_json = "../../settings/data.json"
-window_position_json = "..\\..\\settings\\window_position.json"
-settings_json = "..\\..\\settings\\settings.json"
-
-icon = os.path.normpath(os.path.join(current_dir, icon))
-info_json = os.path.normpath(os.path.join(current_dir, info_json))
-window_position_json = os.path.normpath(os.path.join(current_dir, window_position_json))
-settings_json = os.path.normpath(os.path.join(current_dir, settings_json))
 
 in_delete_state = False
-
 scrollbox_buttons = []
-
 color_1 = "color: white; border: 1px solid teal"
 style_1 = f"background: #222222; {color_1};"
 style_2 = f"background: #666666; {color_1};"
@@ -45,13 +36,13 @@ def execute_file(file_path):
 
 def show_popup_message(message):
     msg_box = QMessageBox()
-    msg_box.setWindowIcon(QIcon(icon))
+    msg_box.setWindowIcon(QIcon(ICON))
     msg_box.setText(message)
     msg_box.exec()
 
 
 def settings_check():
-    if not os.path.isfile(settings_json):
+    if not os.path.isfile(SETTINGS_JSON):
         execute_file("make_settings.py")
         execute_file("open_settings.py")
         show_popup_message("Please Configure And Save")
@@ -60,7 +51,7 @@ def settings_check():
 
 def open_window_for_text_user_input(window_title_text, window_text):
     app = QApplication([])
-    app.setWindowIcon(QIcon(icon))
+    app.setWindowIcon(QIcon(ICON))
 
     ok = QInputDialog.getText(None, window_title_text, window_text)
     if ok[1]:
@@ -78,7 +69,7 @@ def save_window_position_to_json():
         'width': win.width(),
         'height': win.height()
     }
-    with open(window_position_json, "w") as file:
+    with open(WINDOW_POSITION_JSON, "w") as file:
         json.dump(position, file)
 
 
@@ -94,7 +85,7 @@ def save_data_to_json(json_file, data):
 
 def load_window_position():
     try:
-        with open(window_position_json) as file:
+        with open(WINDOW_POSITION_JSON) as file:
             data = file.read().strip()
             if data:
                 position = json.loads(data)
@@ -105,11 +96,10 @@ def load_window_position():
 
 def restart_app():
     save_window_position_to_json()
-    win.close()  # Close the current window
+    win.close()
     os.chdir("../..")
-    os.system(main_py)
+    os.system(LAUNCHER_PY)
     quit()
-
 
 
 class ButtonHoverEventFilter(QObject):
@@ -147,6 +137,7 @@ class StyledButton(QPushButton):
         self.setStylesheet()
         self.installEventFilter(ButtonHoverEventFilter(self))
 
+
     def setStylesheet(self):
         gradient = QLinearGradient(0, 0, 0, 1)
         gradient.setColorAt(0, QColor(70, 70, 70))
@@ -178,18 +169,18 @@ def add_new_button(file_path):
     if file_path:
         name, ok = QInputDialog.getText(None, "Button Name", "Please Enter New Button Name:")
         if ok:
-            data = load_data_from_json(info_json)
+            data = load_data_from_json(INFO_JSON)
             new_button = {
                 "title": name,
                 "path": file_path
             }
             data.append(new_button)
-            save_data_to_json(info_json, data)
+            save_data_to_json(INFO_JSON, data)
             restart_app()
 
 
 def populate_scrollbox_buttons(layout):
-    data = load_data_from_json(info_json)
+    data = load_data_from_json(INFO_JSON)
     for item in data:
         title_ = item['title']
         path = item['path']
@@ -223,8 +214,8 @@ def toggle_confirm_button(add_and_confirm_button, remove_and_cancel_button):
         add_and_confirm_button.setText("Add Button")
         in_delete_state = False
         if remove_and_cancel_button.isChecked():
-            data = load_data_from_json(info_json)
-            save_data_to_json(info_json, data)
+            data = load_data_from_json(INFO_JSON)
+            save_data_to_json(INFO_JSON, data)
             restart_app()
 
 
@@ -240,7 +231,7 @@ def toggle_cancel_button(remove_and_cancel_button, scrollbox_buttons):
 class ModdingUtility(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle(title)
+        self.setWindowTitle(TITLE)
         self.setStyleSheet(background_1)
         layout = QVBoxLayout(self)
         scroll_area = QScrollArea()
@@ -264,6 +255,7 @@ class ModdingUtility(QWidget):
             self.move(window_position[0], window_position[0])
             self.setFixedSize(275, 400)
 
+
     def closeEvent(self, event):
         save_window_position_to_json()
         event.accept()
@@ -271,7 +263,7 @@ class ModdingUtility(QWidget):
 
 def on_add_and_confirm_button_clicked():
     if in_delete_state:
-        data = load_data_from_json(info_json)
+        data = load_data_from_json(INFO_JSON)
         scrollbox_buttons_to_delete = []
         for button in scrollbox_buttons:
             if button.styleSheet() == style_2:
@@ -280,7 +272,7 @@ def on_add_and_confirm_button_clicked():
             for item in data:
                 if item['title'] == button.text():
                     data.remove(item)
-        save_data_to_json(info_json, data)
+        save_data_to_json(INFO_JSON, data)
         restart_app()
     else:
         options = QFileDialog.Options()
@@ -292,7 +284,7 @@ def on_add_and_confirm_button_clicked():
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(icon))
+    app.setWindowIcon(QIcon(ICON))
     win = ModdingUtility()
     win.show()
     settings_check()

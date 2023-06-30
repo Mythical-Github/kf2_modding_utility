@@ -1,14 +1,17 @@
+import os
 import json
-import subprocess
 from pathlib import Path
 
 settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
+
 with open(settings_json) as file:
     data = json.load(file)
 
-steam_app_id = 2232090
-server_ip = data["kf2_server_ip"]
+part_a = data["kf2_game_dir"]
 
-steam_exe = data["steam_exe"]
+os.chdir(part_a)
+os.chdir("Binaries")
 
-subprocess.Popen([steam_exe, "-applaunch", str(steam_app_id), "+connect", server_ip])
+os.system(f"workshopusertool killing_floor_2_wsinfo_mod.txt")
+
+quit()

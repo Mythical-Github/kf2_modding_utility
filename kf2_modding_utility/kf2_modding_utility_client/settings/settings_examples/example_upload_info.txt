@@ -1,0 +1,6 @@
+$Description "Mythical Description"
+$Title "Mythical Title"
+$PreviewFile "C:\Users\Mythical\AppData\Local\Programs\Python\Python311\Lib\site-packages\kf2_modding_utility\kf2_modding_utility_client\scripts\python\upload_mod_to_workshop\testing.png"
+$Tags ""
+$MicroTxItem "false"
+$PackageDirectory "C:\Users\Mythical\AppData\Local\Programs\Python\Python311\Lib\site-packages\kf2_modding_utility\kf2_modding_utility_client\scripts\python\upload_mod_to_workshop\mod_upload_dir"

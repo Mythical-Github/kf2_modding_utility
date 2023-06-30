@@ -1,10 +1,6 @@
 
-To Fix:
-Upload Mod To Workshop Normal Method
-Testing Mods On Server
-upload_mod_to_workshop.py
-
 To Add:
+Server Configurator
 Client/Server Settings Panel
 Client/Server Mod Profile System
 

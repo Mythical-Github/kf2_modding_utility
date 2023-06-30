@@ -38,8 +38,6 @@ window_text = 'Enter New Mod Package Name'
 
 user_input = open_window_for_text_user_input(window_title, window_text)
 
-
-
 def save_data_to_json(json_file, data):
     with open(json_file, 'w') as file:
         json.dump(data, file, indent=4)
@@ -69,11 +67,7 @@ def update_mod_packages(kf_editor_ini, mod_package_names_json):
     with open(kf_editor_ini, "w") as file:
         file.writelines(lines)
 
-
-script_dir = Path(__file__).resolve().parent
-settings_json = Path(__file__).resolve().parent.parent.parent.parent / 'settings' / 'settings.json'
-
-
+settings_json = Path(__file__).resolve().parent.parent / 'settings' / 'settings.json'
 
 with open(settings_json) as file:
     data = json.load(file)

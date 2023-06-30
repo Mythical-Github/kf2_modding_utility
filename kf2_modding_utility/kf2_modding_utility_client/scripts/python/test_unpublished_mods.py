@@ -59,7 +59,7 @@ mutators_line = f"mutator={mutators_line}"
 
 game_mode_key = "game_mode"
 
-game_mode = f{game_mode_data[game_mode_key][0]"
+game_mode = f"{game_mode_data[game_mode_key][0]}"
 
 if not (game_mode == "" or game_mode is None):
     game_mode = f"game={game_mode}?"
@@ -85,7 +85,7 @@ if not (match_length == "" or match_length is None):
 seasonal_zeds = seasonal_zeds_data["seasonal_zeds"][0]
 
 if not (seasonal_zeds == "" or seasonal_zeds is None):
-    seasonal_zeds = f"seasonal_zeds={seasonal_zeds}?"
+    seasonal_zeds = f"AllowSeasonalSkins={seasonal_zeds}?"
 
 subprocess.Popen(f"{steam_exe} -applaunch {str(STEAM_APP_ID)} {map_name}{game_mode}{difficulty}{seasonal_zeds}{match_length}{mutators_line} -log -useunpublished")
 

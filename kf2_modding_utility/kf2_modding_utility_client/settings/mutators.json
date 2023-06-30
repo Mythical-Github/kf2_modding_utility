@@ -1,0 +1,6 @@
+{
+  "mutators": [
+    "Mythical.KF_Mutator_Mythical",
+	"ServerExtMut.ServerExtMut"
+  ]
+}

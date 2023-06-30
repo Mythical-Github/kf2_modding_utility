@@ -1,23 +1,19 @@
-General:
-Have Mod Uploaders, Pull Info From Json, and Repopulate mod.vdf and upload_info.txt On The Fly With Full File Paths
-Have Mod Testing Method Arguments By On The Fly Populated From Json
 
-Later/Optional:
-Finish/Use reusable_functions.py
-Fix Not Being Able To Resize Application
-Being Able To Drag And Drop Reorder The Scroll Box buttons
-KF2 Editor Commandlet Buttons
-Add To Settings Button (Var Name, Default Value, Adds To make_settings.py, Add To settings.json)
-Multi Server Options
-Multi Mod Options
-Profiles
-Centralize Configs
+To Fix:
+Test Published Mods
+Test Unpublished Mods
+Upload Mod To Workshop Normal Method
 
-Server Side Related:
-Authentication For Running Commands
-Make Server Scripts Have Settings Generation And Run From Settings
+To Add:
+Client/Server Settings Panel
+Client/Server Mod Profile System
 
 Last:
-Poetry Setup
 Full Cleanup
 Documentation/Tutorials
+
+Maybe:
+KF2 Editor Commandlet Buttons
+Separate Logic Out Of Main Py
+Fix Not Being Able To Resize Application
+Being Able To Drag And Drop Reorder The Scroll Box buttons

@@ -1,15 +1,11 @@
 import json
 
 data_2 = {
-    "comment_1": "the steam username and password are for the alternative upload method, I wouldn't reccomend this unless you're doing the test mods on server",
-    "comment_2": "you can leave most of these blank if you don't plan to use related buttons",
     "kf2_server_ip": "127.0.0.1",
     "mod_package_name": "Mythical",
     "mod_game_mode": "KFGameInfo_Mythical",
     "mod_map_name": "KF-ZedsDiner",
     "mod_mutator_name": "KF_Mutator_Mythical",
-    "game_steam_app_id": 232090,
-    "editor_steam_app_id": 232150,
     "easy_testing_port": 7780,
     "webadmin_port": 7779,
     "game_port": 7777,
@@ -22,18 +18,11 @@ data_2 = {
     "kf2_docs_dir": r"C:\\Users\\Mythical\\Documents\\My Games\\KillingFloor2",
     "steam_username": "fake_username",
     "steam_password": "fake_password",
-    "mod_vdf": r"C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\scripts\\python\\upload_mod_to_workshop_alt_method\\Mod.vdf",
-    "upload_info_text": r"C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\scripts\\python\\upload_mod_to_workshop\\upload_info.txt",
-    "upload_dir": r"C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\upload_dir",
-    "thumbnail_image": r"C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\Images\\Testing.png",
     "kf_editor_ini": r"C:\\Users\\Mythical\\Documents\\My Games\\KillingFloor2\\KFGame\\Config\\KFEditor.ini",
     "ide_exe": "C:\\Users\\Mythical\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
-    "icon_path": "C:\\Users\\Mythical\\Documents\\GitHub\\kf2_mythical\\kf2_modding_utility\\images\\kf2_icon_main.png",
     "publishedfileid": "0",
-    "contentfolder": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python"
-                     "/upload_mod_to_workshop_alt_method/mod_upload_dir",
-    "previewfile": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python"
-                   "/upload_mod_to_workshop_alt_method/Testing.png",
+    "contentfolder": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python/upload_mod_to_workshop_alt_method/mod_upload_dir",
+    "previewfile": "C:/Users/Mythical/Documents/GitHub/kf2_mythical/kf2_modding_utility/scripts/python/upload_mod_to_workshop_alt_method/Testing.png",
     "visibility": "0",
     "title": "Workshop Item Title Name",
     "description": "Workshop Item Description",

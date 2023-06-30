@@ -1,6 +1,6 @@
-import json
 import os
 import sys
+import json
 from pathlib import Path
 
 settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'

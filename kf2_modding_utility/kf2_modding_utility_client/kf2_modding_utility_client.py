@@ -1,6 +1,5 @@
 import os
 import sys
-import time
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))

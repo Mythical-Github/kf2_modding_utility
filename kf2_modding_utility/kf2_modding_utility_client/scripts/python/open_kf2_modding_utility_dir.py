@@ -1,5 +1,5 @@
-import subprocess
 import sys
+import subprocess
 from pathlib import Path
 
 dir_path = Path(__file__).resolve().parent.parent.parent

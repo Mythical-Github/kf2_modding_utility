@@ -6,7 +6,7 @@ settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'se
 with open(settings_json) as file:
     data = json.load(file)
 
-steam_app_id = data["game_steam_app_id"]
+steam_app_id = 2232090
 server_ip = data["kf2_server_ip"]
 
 steam_exe = data["steam_exe"]

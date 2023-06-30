@@ -1,7 +1,10 @@
 
 kf2_modding_utility/kf2_modding_utility_client/settings/settings.json
-kf2_modding_utility/kf2_modding_utility_client/scripts/python/__pycache__/main.cpython-311.pyc
 kf2_modding_utility/kf2_modding_utility_server/settings/settings.json
-poetry.lock
+kf2_modding_utility/kf2_modding_utility_server/__pycache__/
+kf2_modding_utility/kf2_modding_utility_client/__pycache__/
+kf2_modding_utility/kf2_modding_utility_client/
 kf2_modding_utility/__pycache__/
+kf2_modding_utility/.idea
+poetry.lock
 *.pyc

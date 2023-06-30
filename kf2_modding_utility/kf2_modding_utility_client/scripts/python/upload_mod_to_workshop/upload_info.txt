@@ -1,6 +1,0 @@
-$Description "Mythical Description"
-$Title "Mythical Title"
-$PreviewFile "C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python\upload_mod_to_workshop\testing.png"
-$Tags ""
-$MicroTxItem "false"
-$PackageDirectory "C:\Users\Mythical\Documents\GitHub\kf2_mythical\kf2_modding_utility\scripts\python\upload_mod_to_workshop\mod_upload_dir"

@@ -3,7 +3,7 @@ import json
 import socket
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-settings_json = os.path.join(script_dir, '..', '..', '..', 'settings', 'settings.json')
+settings_json = os.path.join(script_dir, '..', '..', 'settings', 'settings.json')
 
 with open(settings_json) as file:
     data = json.load(file)

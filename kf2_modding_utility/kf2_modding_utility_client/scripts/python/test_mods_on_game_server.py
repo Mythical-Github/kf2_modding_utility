@@ -7,7 +7,7 @@ import subprocess
 script_dir = os.path.dirname(os.path.abspath(__file__))
 script_dir = os.path.join(script_dir, '..')
 
-settings_json = os.path.join(script_dir, '..', 'settings', 'settings.json')
+settings_json = os.path.join(script_dir, '..', '..', 'settings', 'settings.json')
 
 with open(settings_json) as file:
     data = json.load(file)

@@ -2,9 +2,8 @@
 To Fix:
 Test Published Mods
 Test Unpublished Mods
-Test Mods On Server
 Upload Mod To Workshop
-Upload Mod To Workshop Alt Method
+Server Pys
 
 To Add:
 Client/Server Settings Panel

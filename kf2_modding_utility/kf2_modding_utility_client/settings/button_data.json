@@ -57,11 +57,11 @@
     },
     {
         "title": "Test Unpublished Mods",
-        "path": "test_published_mods.py"
+        "path": "test_unpublished_mods.py"
     },
     {
         "title": "Test Published Mods",
-        "path": "test_unpublished_mods.py"
+        "path": "test_published_mods.py"
     },
     {
         "title": "Test Mods On Server",

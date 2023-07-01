@@ -4,9 +4,9 @@ from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QInputDialog
 from PyQt5.QtGui import QIcon
 
-settings_json = Path(__file__).resolve().parent.parent.parent.parent / 'settings' / 'settings.json'
-dev_settings_json = Path(__file__).resolve().parent.parent.parent.parent / 'settings' / 'dev_settings.json'
-ini_json = Path(__file__).resolve().parent.parent.parent.parent / 'settings' / 'mod_package_names.json'
+settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
+dev_settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'dev_settings.json'
+ini_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'mod_package_names.json'
 
 
 with open(settings_json) as file:
@@ -66,8 +66,6 @@ def update_mod_packages(kf_editor_ini, mod_package_names_json):
 
     with open(kf_editor_ini, "w") as file:
         file.writelines(lines)
-
-settings_json = Path(__file__).resolve().parent.parent / 'settings' / 'settings.json'
 
 with open(settings_json) as file:
     data = json.load(file)

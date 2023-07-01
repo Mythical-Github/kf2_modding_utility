@@ -1,11 +1,14 @@
 import sys
+import time
 import json
 from pathlib import Path
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-settings_json = Path(__file__).resolve().parent.parent.parent / "settings" / "settings.json"
+
+SETTINGS_DIR = Path(__file__).resolve().parent.parent.parent / "settings"
+
 
 class ReusableButton(QPushButton):
     def __init__(self, title, value, click_callback):
@@ -40,24 +43,24 @@ class ReusableButton(QPushButton):
             f"border: {border_width} solid {border_color.name()};"
         )
 
-
     def handle_click(self):
         if self.click_callback:
             self.click_callback(self.text(), self.value)
 
 
 class ValueDialog(QDialog):
-    def __init__(self, key, current_value, parent=None):
+    def __init__(self, key, current_value, settings_json, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Edit Value")
         self.key = key
         self.current_value = current_value
         self.new_value = current_value
+        self.settings_json = settings_json
 
         self.value_line_edit = QLineEdit()
-        self.file_button = QPushButton("Browse File")
-        self.dir_button = QPushButton("Browse Directory")
-        self.save_button = QPushButton("Save")
+        self.file_button = ReusableButton("Browse File", "", self.browse_file)
+        self.dir_button = ReusableButton("Browse Directory", "", self.browse_directory)
+        self.save_button = ReusableButton("Save", "", self.save_changes)
         self.save_button.setEnabled(False)
 
         layout = QVBoxLayout()
@@ -65,43 +68,38 @@ class ValueDialog(QDialog):
         layout.addWidget(self.value_line_edit)
 
         button_layout = QHBoxLayout()
-        button_layout.addWidget(self.file_button)
-        button_layout.addWidget(self.dir_button)
         button_layout.addStretch()
         layout.addLayout(button_layout)
+        layout.addWidget(self.file_button)
+        layout.addWidget(self.dir_button)
         layout.addWidget(self.save_button)
 
         self.setLayout(layout)
-
-        self.file_button.clicked.connect(self.browse_file)
-        self.dir_button.clicked.connect(self.browse_directory)
-        self.value_line_edit.textChanged.connect(self.value_changed)
-        self.save_button.clicked.connect(self.save_changes)
-
         self.setStyleSheet("color: white;")
+        self.resize(400, 50)
 
         if isinstance(current_value, list):
             current_value = str(current_value)
         self.value_line_edit.setText(str(current_value))
+        self.value_line_edit.textChanged.connect(self.value_changed)
 
     def value_changed(self, text):
         self.new_value = text
         self.save_button.setEnabled(True)
 
     def save_changes(self):
-        with open(settings_json, 'r') as file:
+        with open(self.settings_json, 'r') as file:
             data = json.load(file)
-            
+
         if isinstance(data[self.key], list):
             self.new_value = json.loads(self.new_value)
         data[self.key] = self.new_value
 
-        with open(settings_json, 'w') as file:
+        with open(self.settings_json, 'w') as file:
             json.dump(data, file, indent=4)
 
         self.current_value = self.new_value
         self.save_button.setEnabled(False)
-
 
     def browse_file(self):
         file_dialog = QFileDialog()
@@ -111,7 +109,7 @@ class ValueDialog(QDialog):
         if file_path:
             self.new_value = file_path
             self.value_line_edit.setText(file_path)
-            self.value_changed()
+            self.value_changed(file_path)
 
     def browse_directory(self):
         file_dialog = QFileDialog()
@@ -121,8 +119,7 @@ class ValueDialog(QDialog):
         if dir_path:
             self.new_value = dir_path
             self.value_line_edit.setText(dir_path)
-            self.value_changed()
-
+            self.value_changed(dir_path)
 
 
 class MainWindow(QWidget):
@@ -142,13 +139,21 @@ class MainWindow(QWidget):
         self.load_json_data(layout)
 
         self.setLayout(layout)
-        self.setGeometry(100, 100, 400, 600)
-
+        self.setGeometry(450, 250, 275, 400)
         self.setStyleSheet("background-color: rgb(20, 20, 20);")
 
     def load_json_data(self, layout):
-        settings_dir = Path(__file__).resolve().parent.parent.parent / "settings"
-        json_files = settings_dir.glob("*.json")
+        json_files = [
+            SETTINGS_DIR / "button_data.json",
+            SETTINGS_DIR / "game_mode.json",
+            SETTINGS_DIR / "map_name.json",
+            SETTINGS_DIR / "match_difficulty.json",
+            SETTINGS_DIR / "match_length.json",
+            SETTINGS_DIR / "mod_package_names.json",
+            SETTINGS_DIR / "mutators.json",
+            SETTINGS_DIR / "seasonal_zeds.json",
+            SETTINGS_DIR / "settings.json"
+        ]
 
         scroll_content = QWidget()
         scroll_layout = QVBoxLayout()
@@ -158,35 +163,56 @@ class MainWindow(QWidget):
             with open(json_file) as file:
                 try:
                     data = json.load(file)
+                    print(f"JSON Data for {json_file}: {data}")
                     if isinstance(data, list):
-                        data = {"items": data}
-                except json.JSONDecodeError:
+                        self.add_list_scroll_area(scroll_layout, json_file.stem, data)
+                    elif isinstance(data, dict):
+                        self.add_button_group(scroll_layout, json_file.stem, data)
+                except json.JSONDecodeError as e:
                     print(f"Error loading JSON file: {json_file}")
+                    print(e)
                     continue
-
-            group_box = QGroupBox(json_file.stem)
-            group_layout = QVBoxLayout()
-            group_box.setStyleSheet("color: white;")
-
-            if isinstance(data, dict):
-                for item_key, item_value in data.items():
-                    button = ReusableButton(item_key, item_value, self.handle_button_click)
-                    group_layout.addWidget(button)
-            elif isinstance(data, list):
-                for index, item_value in enumerate(data):
-                    button = ReusableButton(f"Item {index+1}", item_value, self.handle_button_click)
-                    group_layout.addWidget(button)
-
-            group_box.setLayout(group_layout)
-            scroll_layout.addWidget(group_box)
 
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
         scroll_area.setWidget(scroll_content)
         layout.addWidget(scroll_area)
 
+    def add_button_group(self, layout, group_name, data):
+        group_box = QGroupBox(group_name)
+        group_layout = QVBoxLayout()
+        group_box.setStyleSheet("color: white;")
+
+        for item_key, item_value in data.items():
+            button = ReusableButton(item_key, item_value, self.handle_button_click)
+            group_layout.addWidget(button)
+
+        group_box.setLayout(group_layout)
+        layout.addWidget(group_box)
+
+    def add_list_scroll_area(self, layout, group_name, data):
+        group_box = QGroupBox(group_name)
+        group_layout = QVBoxLayout()
+        group_box.setStyleSheet("color: white;")
+
+        scroll_area = QScrollArea()
+        scroll_content = QWidget()
+        scroll_layout = QVBoxLayout()
+        scroll_content.setLayout(scroll_layout)
+
+        for index, item_value in enumerate(data):
+            button = ReusableButton(f"{item_value}", item_value, self.handle_button_click)
+            scroll_layout.addWidget(button)
+
+        scroll_area.setWidgetResizable(True)
+        scroll_area.setWidget(scroll_content)
+        group_layout.addWidget(scroll_area)
+        group_box.setLayout(group_layout)
+        layout.addWidget(group_box)
+
     def handle_button_click(self, key, current_value):
-        dialog = ValueDialog(key, current_value, self)
+        settings_json = SETTINGS_DIR / f"{key}.json"
+        dialog = ValueDialog(key, current_value, settings_json, self)
 
         if dialog.exec_():
             new_value = dialog.current_value

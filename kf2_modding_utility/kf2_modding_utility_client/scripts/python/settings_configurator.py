@@ -1,13 +1,22 @@
 import sys
-import time
 import json
 from pathlib import Path
 from PyQt5.QtGui import *
-from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-
 SETTINGS_DIR = Path(__file__).resolve().parent.parent.parent / "settings"
+ICON = Path(__file__).resolve().parent.parent.parent / "images/kf2_icon_main.png"
+
+json_files = [
+    SETTINGS_DIR / "settings.json",
+    SETTINGS_DIR / "map_name.json",
+    SETTINGS_DIR / "game_mode.json",
+    SETTINGS_DIR / "match_length.json",
+    SETTINGS_DIR / "match_difficulty.json",
+    SETTINGS_DIR / "seasonal_zeds.json",
+    SETTINGS_DIR / "mod_package_names.json",
+    SETTINGS_DIR / "mutators.json"
+]
 
 
 class ReusableButton(QPushButton):
@@ -26,15 +35,13 @@ class ReusableButton(QPushButton):
         gradient_stops = gradient.stops()
         gradient_str = "qlineargradient(x1: 0, y1: 1, x2: 0, y2: 0,"
         color_1 = "color: white; border: 1px solid teal"
-        self.original_style = f"background: {gradient_str}; {color_1};"
+        original_style = f"background: {gradient_str}; {color_1};"
         for stop in gradient_stops:
             color = stop[1].darker(200).name()
             pos = 1 - stop[0]
             gradient_str += f" stop: {pos} {color},"
         gradient_str = gradient_str.rstrip(",") + ")"
-
         text_color = QColor(255, 255, 255)
-
         border_color = QColor(0, 128, 128)
         border_width = "1px"
 
@@ -88,44 +95,20 @@ class ValueDialog(QDialog):
         self.save_button.setEnabled(True)
 
     def save_changes(self):
-        with open(self.settings_json, 'r') as file:
-            data = json.load(file)
-
-        if isinstance(data[self.key], list):
-            self.new_value = json.loads(self.new_value)
-        data[self.key] = self.new_value
-
-        with open(self.settings_json, 'w') as file:
-            json.dump(data, file, indent=4)
-
-        self.current_value = self.new_value
-        self.save_button.setEnabled(False)
+        self.close()
 
     def browse_file(self):
-        file_dialog = QFileDialog()
-        file_dialog.setFileMode(QFileDialog.AnyFile)
-        file_path, _ = file_dialog.getOpenFileName(self, "Select File")
-
-        if file_path:
-            self.new_value = file_path
-            self.value_line_edit.setText(file_path)
-            self.value_changed(file_path)
+        pass
 
     def browse_directory(self):
-        file_dialog = QFileDialog()
-        file_dialog.setFileMode(QFileDialog.DirectoryOnly)
-        dir_path = file_dialog.getExistingDirectory(self, "Select Directory")
-
-        if dir_path:
-            self.new_value = dir_path
-            self.value_line_edit.setText(dir_path)
-            self.value_changed(dir_path)
+        pass
 
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("KF2 Modding Utility Settings Configurator")
+        self.setWindowTitle("Settings Configurator")
+        self.setWindowIcon(QIcon(str(ICON.resolve())))
         self.setup_ui()
 
     def setup_ui(self):
@@ -139,22 +122,10 @@ class MainWindow(QWidget):
         self.load_json_data(layout)
 
         self.setLayout(layout)
-        self.setGeometry(450, 250, 275, 400)
+        self.setGeometry(450, 250, 300, 400)
         self.setStyleSheet("background-color: rgb(20, 20, 20);")
 
     def load_json_data(self, layout):
-        json_files = [
-            SETTINGS_DIR / "button_data.json",
-            SETTINGS_DIR / "game_mode.json",
-            SETTINGS_DIR / "map_name.json",
-            SETTINGS_DIR / "match_difficulty.json",
-            SETTINGS_DIR / "match_length.json",
-            SETTINGS_DIR / "mod_package_names.json",
-            SETTINGS_DIR / "mutators.json",
-            SETTINGS_DIR / "seasonal_zeds.json",
-            SETTINGS_DIR / "settings.json"
-        ]
-
         scroll_content = QWidget()
         scroll_layout = QVBoxLayout()
         scroll_content.setLayout(scroll_layout)
@@ -163,7 +134,6 @@ class MainWindow(QWidget):
             with open(json_file) as file:
                 try:
                     data = json.load(file)
-                    print(f"JSON Data for {json_file}: {data}")
                     if isinstance(data, list):
                         self.add_list_scroll_area(scroll_layout, json_file.stem, data)
                     elif isinstance(data, dict):
@@ -195,18 +165,30 @@ class MainWindow(QWidget):
         group_layout = QVBoxLayout()
         group_box.setStyleSheet("color: white;")
 
-        scroll_area = QScrollArea()
-        scroll_content = QWidget()
-        scroll_layout = QVBoxLayout()
-        scroll_content.setLayout(scroll_layout)
-
         for index, item_value in enumerate(data):
-            button = ReusableButton(f"{item_value}", item_value, self.handle_button_click)
-            scroll_layout.addWidget(button)
+            if isinstance(item_value, list):
+                sub_group_box = QGroupBox(f"Item {index + 1}")
+                sub_group_layout = QVBoxLayout()
+                sub_group_box.setStyleSheet("color: white;")
 
-        scroll_area.setWidgetResizable(True)
-        scroll_area.setWidget(scroll_content)
-        group_layout.addWidget(scroll_area)
+                scroll_area = QScrollArea()
+                scroll_content = QWidget()
+                scroll_layout = QVBoxLayout()
+                scroll_content.setLayout(scroll_layout)
+
+                for sub_item_value in item_value:
+                    button = ReusableButton(f"{sub_item_value}", sub_item_value, self.handle_button_click)
+                    scroll_layout.addWidget(button)
+
+                scroll_area.setWidgetResizable(True)
+                scroll_area.setWidget(scroll_content)
+                sub_group_layout.addWidget(scroll_area)
+                sub_group_box.setLayout(sub_group_layout)
+                group_layout.addWidget(sub_group_box)
+            else:
+                button = ReusableButton(f"{item_value}", item_value, self.handle_button_click)
+                group_layout.addWidget(button)
+
         group_box.setLayout(group_layout)
         layout.addWidget(group_box)
 
@@ -215,20 +197,12 @@ class MainWindow(QWidget):
         dialog = ValueDialog(key, current_value, settings_json, self)
 
         if dialog.exec_():
-            new_value = dialog.current_value
-            sender_button = self.sender()
-            sender_button.setText(new_value)
-
-            with open(settings_json, 'r') as file:
-                data = json.load(file)
-                data[key] = new_value
-
-            with open(settings_json, 'w') as file:
-                json.dump(data, file, indent=4)
+            pass
 
 
 def main():
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon(str(ICON.resolve())))
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())

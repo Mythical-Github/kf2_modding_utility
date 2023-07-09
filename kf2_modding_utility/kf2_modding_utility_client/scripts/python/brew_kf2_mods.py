@@ -1,3 +1,4 @@
+import os
 import sys
 import json
 import subprocess
@@ -14,6 +15,8 @@ part_b = "Binaries/Win64"
 
 kf2_dir = Path(part_a) / part_b
 
-subprocess.Popen(["kfeditor", "brewcontent", "-platform=PC", package_name], cwd=kf2_dir)
+os.chdir(kf2_dir)
+
+subprocess.Popen(["kfeditor", "brewcontent", "-platform=PC", package_name])
 
 sys.exit()

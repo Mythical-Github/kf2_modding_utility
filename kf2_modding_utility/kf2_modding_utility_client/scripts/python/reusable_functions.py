@@ -1,5 +1,6 @@
 import os
 import sys
+import webbrowser
 from pathlib import Path
 
 
@@ -17,3 +18,8 @@ def open_dir_in_file_browser(dir_path):
             print("Unsupported platform.")
     else:
         print("Directory path is invalid or doesn't exist.")
+
+
+def open_website(url):
+    webbrowser.open(url)
+    pass

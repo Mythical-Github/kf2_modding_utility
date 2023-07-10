@@ -1,25 +1,22 @@
 import os
 import sys
-import time
 import json
 import subprocess
-from PyQt5.QtGui import QColor, QLinearGradient, QIcon
-from PyQt5.QtCore import QEvent, QObject
-from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFileDialog,
-                             QInputDialog, QScrollArea, QMessageBox
-                             )
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 
 
 TITLE = "KF2 Modding Utility"
 LAUNCHER_PY = "kf2_modding_utility_client.py"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(SCRIPT_DIR)
-current_dir = os.getcwd()
-ICON = os.path.normpath(os.path.join(current_dir, "..\\..\\images\\kf2_icon_main.png"))
-INFO_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\button_data.json"))
-WINDOW_POSITION_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\window_position.json"))
-SETTINGS_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\settings.json"))
-DEV_SETTINGS_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\dev_settings.json"))
+ICON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\images\\kf2_icon_main.png"))
+INFO_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\button_data.json"))
+WINDOW_POSITION_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\window_position.json"))
+SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\settings.json"))
+DEV_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\dev_settings.json"))
+MOD_VDF = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\mod.vdf"))
 
 
 in_delete_state = False

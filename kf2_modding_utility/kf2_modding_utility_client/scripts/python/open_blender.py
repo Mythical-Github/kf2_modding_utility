@@ -8,10 +8,10 @@ with open(SETTINGS_JSON) as file:
     data = json.load(file)
 
 
-blender_exe = data["blender_exe"]
+BLENDER_EXE = data["BLENDER_EXE"]
 
 
-subprocess.Popen([blender_exe])
+subprocess.Popen([BLENDER_EXE])
 
 
 sys.exit()

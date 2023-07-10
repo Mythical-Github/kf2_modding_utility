@@ -8,10 +8,10 @@ with open(SETTINGS_JSON) as file:
     data = json.load(file)
 
 
-ide_exe = data["ide_exe"]
+IDE_EXE = data["ide_exe"]
 
 
-subprocess.Popen([ide_exe])
+subprocess.Popen([IDE_EXE])
 
 
 sys.exit()

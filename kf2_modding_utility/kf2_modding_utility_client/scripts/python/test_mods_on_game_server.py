@@ -17,6 +17,8 @@ content_brewer_py = f"{script_dir}\\brew_kf2_mods.py"
 workshop_uploader_py = f"{script_dir}\\upload_mod_to_workshop_alt_method.py"
 open_kf2_to_server_py = f"{script_dir}\\open_kf2_to_server.py"
 server_restarter_py = f"{script_dir}\\restart_game_server.py"
+close_kf2_py = f"{script_dir}\\close_kf2.py"
+close_steam_py = f"{script_dir}\\close_steam.py"
 
 host = data["kf2_server_ip"]
 port = data["easy_testing_port"]
@@ -29,9 +31,9 @@ print("first server restart started")
 subprocess.run(["python", server_restarter_py])
 print("first server restart ended")
 
-os.system("taskkill /f /im steam.exe")
+subprocess.run(["python", close_steam_py])
 
-os.system("taskkill /f /im KFGame.exe")
+subprocess.run(["python", close_kf2_py])
 
 print("started delay")
 time.sleep(restart_delay)

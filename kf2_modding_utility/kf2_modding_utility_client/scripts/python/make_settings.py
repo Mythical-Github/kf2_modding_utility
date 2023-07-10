@@ -1,5 +1,5 @@
 import sys
-import json
+from main import SETTINGS_JSON
 
 
 settings = {
@@ -33,8 +33,8 @@ settings = {
 }
 
 
-with open('..\\..\\settings\\settings.json', 'w') as settings_json:
-    json.dump(settings, settings_json, indent=4)
+with open(SETTINGS_JSON, 'w') as json:
+    json.dump(settings, json, indent=4)
 
 
 sys.exit()

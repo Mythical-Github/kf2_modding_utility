@@ -1,5 +1,4 @@
 import sys
-import time
 from kf2_modding_utility.kf2_modding_utility_client import kf2_modding_utility_client
 from kf2_modding_utility.kf2_modding_utility_server import kf2_modding_utility_server
 
@@ -19,3 +18,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    sys.exit()

@@ -17,6 +17,14 @@ WINDOW_POSITION_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\setti
 SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\settings.json"))
 DEV_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\dev_settings.json"))
 MOD_VDF = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\mod.vdf"))
+MUTATOR_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\mutators.json"))
+GAME_MODE_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\game_mode.json")) 
+MAP_NAME_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\map_name.json")) 
+DIFFICULTY_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\match_difficulty.json"))
+SEASONAL_ZED_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\seasonal_zeds.json"))
+MATCH_LENGTH_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\match_length.json"))
+
+
 
 
 in_delete_state = False

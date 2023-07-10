@@ -1,6 +1,5 @@
 {
   "mutators": [
-	"ServerExtMut.ServerExtMut",
-	"test.test"
+	"ServerExtMut.ServerExtMut"
   ]
 }

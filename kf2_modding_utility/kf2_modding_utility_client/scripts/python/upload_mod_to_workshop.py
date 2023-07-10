@@ -1,34 +1,24 @@
 import os
 import json
-import time
-import shutil
 from pathlib import Path
 from main import SETTINGS_JSON
-
-
-template = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings_examples' / 'example_upload_info.txt'
-wsinfo_file = f"{test}\\killing_floor_2_wsinfo_mod.txt"
 
 
 with open(SETTINGS_JSON) as file:
     settings_data = json.load(file)
 
 
-part_a = settings_data["kf2_game_dir"]
+kf2_docs_dir = settings_data["kf2_game_dir"]
+template = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings_examples' / 'example_upload_info.txt'
+wsinfo_file = f"{kf2_docs_dir}\\killing_floor_2_wsinfo_mod.txt"
+wsinfo_file = Path(wsinfo_file)
 
 
-os.chdir(part_a)
-os.chdir("Binaries")
+os.chdir(f"{kf2_docs_dir}/Binaries")
 
 
-testing = f'{test}\\killing_floor_2_wsinfo_mod.txt'
-
-
-testing = Path(testing)
-
-
-if os.path.isfile(testing):
-    testing.unlink()
+if os.path.isfile(wsinfo_file):
+    wsinfo_file.unlink()
 
 
 with open(wsinfo_file, 'w') as file:

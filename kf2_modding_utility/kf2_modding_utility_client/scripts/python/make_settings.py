@@ -1,6 +1,8 @@
+import sys
 import json
 
-data = {
+
+settings = {
     "kf2_server_ip": "127.0.0.1",
     "mod_package_name": "Mythical",
     "mod_game_mode": "KFGameInfo_Mythical",
@@ -30,5 +32,10 @@ data = {
     "show_log_window": "false"
 }
 
-with open('..\\..\\settings\\settings.json', 'w') as file:
-    json.dump(data, file, indent=4)
+
+with open('..\\..\\settings\\settings.json', 'w') as settings_json:
+    json.dump(settings, settings_json, indent=4)
+
+
+sys.exit()
+

@@ -1,15 +1,17 @@
 import sys
-import subprocess
-from pathlib import Path
+import json
+from main import SETTINGS_JSON
+from reusable_functions import *
 
-dir_path = Path(__file__).resolve().parent.parent.parent
 
-if Path(dir_path).is_dir():
-    if sys.platform.startswith('win'):
-        subprocess.run(['explorer', dir_path], shell=True)
-    elif sys.platform.startswith('linux'):
-        subprocess.run(['xdg-open', dir_path])
-    else:
-        print("Unsupported platform.")
-else:
-    print("Directory path is invalid or doesn't exist.")
+with open(SETTINGS_JSON) as file:
+    data = json.load(file)
+
+
+DIR_PATH = Path(__file__).resolve().parent.parent.parent
+
+
+open_dir_in_file_browser(DIR_PATH)
+
+
+sys.exit()

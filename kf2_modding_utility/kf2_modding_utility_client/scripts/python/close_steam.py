@@ -1,8 +1,6 @@
-import os
 import sys
+from reusable_functions import *
 
-
-os.system("taskkill /f /im steam.exe")
-
+kill_task("steam")
 
 sys.exit()

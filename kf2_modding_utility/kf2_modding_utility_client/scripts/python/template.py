@@ -1,17 +1,15 @@
 import sys
 import json
-import subprocess
 from main import SETTINGS_JSON
+from reusable_functions import *
 
 
 with open(SETTINGS_JSON) as file:
     data = json.load(file)
 
 
-ide_exe = data["ide_exe"]
-
-
-subprocess.Popen([ide_exe])
+# retrieving value from SETTINGS_JSON example
+# server_ip = data["kf2_server_ip"]
 
 
 sys.exit()

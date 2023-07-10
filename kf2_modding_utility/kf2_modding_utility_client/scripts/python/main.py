@@ -19,6 +19,7 @@ ICON = os.path.normpath(os.path.join(current_dir, "..\\..\\images\\kf2_icon_main
 INFO_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\button_data.json"))
 WINDOW_POSITION_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\window_position.json"))
 SETTINGS_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\settings.json"))
+DEV_SETTINGS_JSON = os.path.normpath(os.path.join(current_dir, "..\\..\\settings\\dev_settings.json"))
 
 
 in_delete_state = False

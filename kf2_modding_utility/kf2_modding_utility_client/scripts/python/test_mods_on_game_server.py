@@ -5,7 +5,7 @@ import time
 import socket
 import subprocess
 
-restart_delay = 20
+restart_delay = 10
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 settings_json = os.path.join(script_dir, '..', '..', 'settings', 'settings.json')
@@ -27,6 +27,10 @@ print("workshop uploader started")
 subprocess.run(["python", workshop_uploader_py])
 print("workshop uploader finished")
 
+print("first started delay")
+time.sleep(restart_delay)
+print("first delay ended")
+
 print("first server restart started")
 subprocess.run(["python", server_restarter_py])
 print("first server restart ended")
@@ -35,9 +39,9 @@ subprocess.run(["python", close_steam_py])
 
 subprocess.run(["python", close_kf2_py])
 
-print("started delay")
+print("second started delay")
 time.sleep(restart_delay)
-print("delay ended")
+print("second delay ended")
 
 print("second server restart started")
 subprocess.run(["python", server_restarter_py])

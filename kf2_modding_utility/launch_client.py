@@ -6,5 +6,5 @@ def main():
     kf2_modding_utility_client.main()
 
 
-if __name__ == "__main__":
+    if __name__ == "__main__":
     main()

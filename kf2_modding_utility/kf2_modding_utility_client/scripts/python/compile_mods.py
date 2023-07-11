@@ -9,7 +9,7 @@ with open(SETTINGS_JSON) as file:
     DATA = json.load(file)
 
 
-kf2_dir = Path(DATA["kf2_game_dir"]) / "Binaries\Win64/kfeditor.exe"
+kf2_dir = Path(DATA["kf2_game_dir"]) / "Binaries/Win64/kfeditor.exe"
 command = [str(kf2_dir), "make"]
 
 

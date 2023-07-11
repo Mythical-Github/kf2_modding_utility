@@ -5,13 +5,13 @@ from reusable_functions import *
 
 
 with open(SETTINGS_JSON) as settings_json:
-    settings_data = json.load(settings_json)
+    SETTINGS_DATA = json.load(settings_json)
     
     
-url = settings_data["vps_access_url"]
+URL = SETTINGS_DATA["vps_access_url"]
 
 
-open_website(url)
+open_website(URL)
 
 
 sys.exit()

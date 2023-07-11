@@ -5,10 +5,10 @@ from main import SETTINGS_JSON
 
 
 with open(SETTINGS_JSON) as file:
-    data = json.load(file)
+    DATA = json.load(file)
 
 
-BLENDER_EXE = data["BLENDER_EXE"]
+BLENDER_EXE = DATA["blender_exe"]
 
 
 subprocess.Popen([BLENDER_EXE])

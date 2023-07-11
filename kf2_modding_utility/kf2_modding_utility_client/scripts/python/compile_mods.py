@@ -1,21 +1,19 @@
 import sys
 import json
 import subprocess
+from pathlib import Path
 from main import SETTINGS_JSON
 
 
 with open(SETTINGS_JSON) as file:
-    data = json.load(file)
+    DATA = json.load(file)
 
 
-part_a = data["kf2_game_dir"]
-part_b = "Binaries\Win64"
+kf2_dir = Path(DATA["kf2_game_dir"]) / "Binaries\Win64/kfeditor.exe"
+command = [str(kf2_dir), "make"]
 
 
-kf2_dir = Path(part_a) / part_b
-
-
-subprocess.Popen([kf2_dir / "kfeditor.exe", "make"])
+subprocess.Popen(command)
 
 
 sys.exit()

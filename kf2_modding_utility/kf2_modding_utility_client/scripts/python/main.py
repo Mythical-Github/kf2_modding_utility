@@ -25,8 +25,6 @@ SEASONAL_ZED_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\
 MATCH_LENGTH_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\match_length.json"))
 
 
-
-
 in_delete_state = False
 scrollbox_buttons = []
 color_1 = "color: white; border: 1px solid teal"

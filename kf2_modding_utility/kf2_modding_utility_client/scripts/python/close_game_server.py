@@ -5,11 +5,11 @@ from main import SETTINGS_JSON
 
 
 with open(SETTINGS_JSON) as file:
-    data = json.load(file)
+    DATA = json.load(file)
 
 
-HOST = data["kf2_server_ip"]
-PORT = data["easy_testing_port"]
+HOST = DATA["kf2_server_ip"]
+PORT = DATA["easy_testing_port"]
 COMMAND_TO_SEND = "close_server"
 
 

@@ -2,7 +2,7 @@ import sys
 from main import SETTINGS_JSON
 
 
-settings = {
+SETTINGS = {
     "kf2_server_ip": "127.0.0.1",
     "mod_package_name": "Mythical",
     "mod_game_mode": "KFGameInfo_Mythical",
@@ -34,7 +34,7 @@ settings = {
 
 
 with open(SETTINGS_JSON, 'w') as json:
-    json.dump(settings, json, indent=4)
+    json.dump(SETTINGS, json, indent=4)
 
 
 sys.exit()

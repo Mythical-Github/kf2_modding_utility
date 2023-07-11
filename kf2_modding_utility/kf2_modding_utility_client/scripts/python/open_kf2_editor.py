@@ -12,14 +12,14 @@ with open(DEV_SETTINGS_JSON) as file:
     dev_data = json.load(file)
 
 
-steam_exe = data["steam_exe"]
-steam_app_id = dev_data["editor_steam_app_id"]
+STEAM_EXE = data["steam_exe"]
+STEAM_APP_ID = dev_data["editor_steam_app_id"]
 
 
 command = [
-    steam_exe,
+    STEAM_EXE,
     "-applaunch",
-    str(steam_app_id),
+    str(STEAM_APP_ID),
     "-NoGADWarning"
 ]
 

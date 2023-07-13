@@ -6,21 +6,14 @@ from main import SETTINGS_JSON
 
 
 with open(SETTINGS_JSON) as file:
-    data = json.load(file)
+    DATA = json.load(file)
 
-
-package_name = data["mod_package_name"]
-part_a = data["kf2_game_dir"]
-part_b = "Binaries/Win64"
-
-
-kf2_dir = Path(part_a) / part_b
-
-
+kf2_dir = DATA["kf2_game_dir"]
+kf2_dir = f"{kf2_dir}/Binaries/Win64"
 os.chdir(kf2_dir)
 
 
-subprocess.Popen(["kfeditor", "brewcontent", "-platform=PC", package_name])
+subprocess.Popen(["kfeditor", "brewcontent", "-platform=PC", DATA["mod_package_name"]])
 
 
 sys.exit()

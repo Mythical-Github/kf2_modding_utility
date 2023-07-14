@@ -1,23 +1,25 @@
-import os
 import json
 from pathlib import Path
-from PyQt5.QtWidgets import QApplication, QInputDialog
-from PyQt5.QtGui import QIcon
-
-settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
-dev_settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'dev_settings.json'
-ini_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'mod_package_names.json'
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from main import SETTINGS_JSON, DEV_SETTINGS_JSON, MOD_PACKAGE_NAMES_JSON
 
 
-with open(settings_json) as file:
+with open(SETTINGS_JSON) as file:
     data = json.load(file)
-
-
-with open(dev_settings_json) as file:
+with open(DEV_SETTINGS_JSON) as file:
     dev_data = json.load(file)
+with open(MOD_PACKAGE_NAMES_JSON) as file_:
+    ini_data = json.load(file_)
+    ini_data.append(user_input)
+    save_data_to_json(MOD_PACKAGE_NAMES_JSON, ini_data)
 
 
 icon_path = dev_data["icon_path"]
+kf_editor_ini = data["kf_editor_ini"]
+window_text = 'Enter New Mod Package Name'
+window_title = 'Add Mod Package Name To Ini'
+user_input = open_window_for_text_user_input(window_title, window_text)
 
 
 def open_window_for_text_user_input(window_title_text, window_text):
@@ -38,22 +40,9 @@ def open_window_for_text_user_input(window_title_text, window_text):
     return output_text
 
 
-window_title = 'Add Mod Package Name To Ini'
-window_text = 'Enter New Mod Package Name'
-
-
-user_input = open_window_for_text_user_input(window_title, window_text)
-
-
 def save_data_to_json(json_file, data):
     with open(json_file, 'w') as file:
         json.dump(data, file, indent=4)
-
-
-with open(ini_json) as file_:
-    ini_data = json.load(file_)
-    ini_data.append(user_input)
-    save_data_to_json(ini_json, ini_data)
 
 
 def update_mod_packages(kf_editor_ini, mod_package_names_json):
@@ -81,14 +70,7 @@ def update_mod_packages(kf_editor_ini, mod_package_names_json):
         file.writelines(lines)
 
 
-with open(settings_json) as file:
-    data = json.load(file)
-
-
-kf_editor_ini = data["kf_editor_ini"]
-
-
-update_mod_packages(kf_editor_ini, ini_json)
+update_mod_packages(kf_editor_ini, MOD_PACKAGE_NAMES_JSON)
 
 
 quit()

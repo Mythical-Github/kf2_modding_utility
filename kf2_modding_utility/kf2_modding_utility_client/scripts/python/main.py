@@ -23,6 +23,7 @@ MAP_NAME_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\set
 DIFFICULTY_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\match_difficulty.json"))
 SEASONAL_ZED_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\seasonal_zeds.json"))
 MATCH_LENGTH_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\match_length.json"))
+MOD_PACKAGE_NAMES_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\mod_package_names.json"))
 
 
 in_delete_state = False

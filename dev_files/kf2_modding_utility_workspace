@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="0" />
+        <subView activeIndex="0" />
+        <FileBrowser latestSelectedItem="C:\Users\Mythical\Documents\GitHub\kf2_modding_utility">
+            <root foldername="C:\Users\Mythical\Documents\GitHub\kf2_modding_utility" />
+            <root foldername="C:\Program Files (x86)\Steam\steamapps\common\killingfloor2\Development\Src" />
+        </FileBrowser>
+    </Session>
+</NotepadPlus>

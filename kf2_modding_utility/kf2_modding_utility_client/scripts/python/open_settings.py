@@ -1,8 +1,9 @@
 import sys
 import subprocess
+from main import SETTINGS_JSON
 
-settings_json = r"..\..\settings\settings.json"
 
-subprocess.Popen(['start', '', settings_json], shell=True)
+subprocess.Popen(['start', '', SETTINGS_JSON], shell=True)
+
 
 sys.exit()

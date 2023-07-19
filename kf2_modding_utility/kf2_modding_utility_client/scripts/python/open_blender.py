@@ -1,15 +1,17 @@
 import sys
 import json
 import subprocess
-from pathlib import Path
+from main import SETTINGS_JSON
 
-settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
 
-with open(settings_json) as file:
-    data = json.load(file)
+with open(SETTINGS_JSON) as file:
+    DATA = json.load(file)
 
-blender_exe = data["blender_exe"]
 
-subprocess.Popen([blender_exe])
+BLENDER_EXE = DATA["blender_exe"]
+
+
+subprocess.Popen([BLENDER_EXE])
+
 
 sys.exit()

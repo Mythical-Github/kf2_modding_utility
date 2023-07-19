@@ -1,14 +1,23 @@
+import sys
 import json
 import subprocess
-from pathlib import Path
+from main import SETTINGS_JSON, DEV_SETTINGS_JSON
 
-settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
-with open(settings_json) as file:
-    data = json.load(file)
 
-steam_app_id = 232090
-server_ip = data["kf2_server_ip"]
+with open(SETTINGS_JSON) as file:
+    DATA = json.load(file)
+    
 
-steam_exe = data["steam_exe"]
+with open(DEV_SETTINGS_JSON) as file:
+    DEV_DATA = json.load(file)
+    
 
-subprocess.Popen([steam_exe, "-applaunch", str(steam_app_id), "+connect", server_ip])
+STEAM_APP_ID = DEV_DATA["game_steam_app_id"]
+SERVER_IP = DATA["kf2_server_ip"]
+STEAM_EXE = DATA["steam_exe"]
+
+
+subprocess.Popen([STEAM_EXE, "-applaunch", str(STEAM_APP_ID), "+connect", SERVER_IP])
+
+
+sys.exit()

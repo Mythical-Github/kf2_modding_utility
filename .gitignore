@@ -1,5 +1,4 @@
 
 kf2_modding_utility/kf2_modding_utility_client/settings/settings.json
 kf2_modding_utility/kf2_modding_utility_server/settings/settings.json
-poetry.lock
-*.pyc
+kf2_modding_utility/kf2_modding_utility_client/scripts/python/__pycache__/*

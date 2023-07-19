@@ -1,12 +1,17 @@
+import sys
 import json
-import webbrowser
-from pathlib import Path
+from main import SETTINGS_JSON
+from reusable_functions import *
 
-settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
 
-with open(settings_json) as file:
-    data = json.load(file)
+with open(SETTINGS_JSON) as settings_json:
+    SETTINGS_DATA = json.load(settings_json)
+    
+    
+URL = SETTINGS_DATA["vps_access_url"]
 
-url = data["vps_access_url"]
 
-webbrowser.open(url)
+open_website(URL)
+
+
+sys.exit()

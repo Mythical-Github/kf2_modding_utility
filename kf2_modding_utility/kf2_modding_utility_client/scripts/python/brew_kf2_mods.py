@@ -2,18 +2,17 @@ import sys
 import json
 import subprocess
 from pathlib import Path
+from main import SETTINGS_JSON
 
-settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
 
-with open(settings_json) as file:
-    data = json.load(file)
+with open(SETTINGS_JSON) as file:
+    DATA = json.load(file)
 
-package_name = data["mod_package_name"]
-part_a = data["kf2_game_dir"]
-part_b = "Binaries/Win64"
 
-kf2_dir = Path(part_a) / part_b
+kf2_dir = Path(DATA["kf2_game_dir"]) / "Binaries/Win64/kfeditor.exe"
 
-subprocess.Popen(["kfeditor", "brewcontent", "-platform=PC", package_name], cwd=kf2_dir)
+
+subprocess.Popen([kf2_dir, "brewcontent", "-platform=PC", DATA["mod_package_name"]])
+
 
 sys.exit()

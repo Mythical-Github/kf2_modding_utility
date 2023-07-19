@@ -1,22 +1,28 @@
-import os
+import sys
 import json
 import socket
+from main import SETTINGS_JSON
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-settings_json = os.path.join(script_dir, '..', '..', 'settings', 'settings.json')
 
-with open(settings_json) as file:
-    data = json.load(file)
+with open(SETTINGS_JSON) as file:
+    DATA = json.load(file)
 
-host = data["kf2_server_ip"]
-port = data["easy_testing_port"]
 
-command_to_send = "close_server"
+HOST = DATA["kf2_server_ip"]
+PORT = DATA["easy_testing_port"]
+COMMAND_TO_SEND = "close_server"
+
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-client_socket.connect((host, port))
 
-client_socket.sendall(command_to_send.encode())
+client_socket.connect((HOST, PORT))
+
+
+client_socket.sendall(COMMAND_TO_SEND.encode())
+
 
 client_socket.close()
+
+
+sys.exit()

@@ -92,7 +92,7 @@
         "path": "restart_game_server.py"
     },
     {
-        "title": "Open Settings",
-        "path": "open_settings.py"
+        "title": "Settings Configurator",
+        "path": "settings_configurator.py"
     }
 ]

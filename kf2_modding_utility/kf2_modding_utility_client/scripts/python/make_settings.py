@@ -1,6 +1,8 @@
-import json
+import sys
+from main import SETTINGS_JSON
 
-data_2 = {
+
+SETTINGS = {
     "kf2_server_ip": "127.0.0.1",
     "mod_package_name": "Mythical",
     "mod_game_mode": "KFGameInfo_Mythical",
@@ -26,8 +28,14 @@ data_2 = {
     "visibility": "0",
     "title": "Workshop Item Title Name",
     "description": "Workshop Item Description",
-    "changenote": "Workshop Item Changenote Description"
+    "changenote": "Workshop Item Changenote Description",
+    "show_log_window": "false"
 }
 
-with open('..\\..\\settings\\settings.json', 'w') as file_2:
-    json.dump(data_2, file_2, indent=4)
+
+with open(SETTINGS_JSON, 'w') as json:
+    json.dump(SETTINGS, json, indent=4)
+
+
+sys.exit()
+

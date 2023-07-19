@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "kf2-modding-utility"
 version = "0.1.0"
-description = ""
+description = "A modding utility for Killing Floor 2"
 authors = ["Mythical-Github <MythicalData@gmail.com>"]
 readme = "README.md"
 packages = [{include = "kf2_modding_utility"}]

@@ -1,17 +1,17 @@
 import sys
 import json
 import subprocess
-from pathlib import Path
+from main import SETTINGS_JSON
 
-settings_json = Path(__file__).resolve().parent.parent.parent / 'settings' / 'settings.json'
 
-# Load JSON data from settings.json
-with open(settings_json) as file:
-    data = json.load(file)
+with open(SETTINGS_JSON) as file:
+    DATA = json.load(file)
 
-ide_exe = data["ide_exe"]
 
-# Run the blender_exe subprocess
-subprocess.Popen([ide_exe])
+IDE_EXE = DATA["ide_exe"]
+
+
+subprocess.Popen([IDE_EXE])
+
 
 sys.exit()

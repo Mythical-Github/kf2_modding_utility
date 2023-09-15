@@ -1,14 +1,14 @@
 import sys
 import json
 import subprocess
-from main import SETTINGS_JSON
+from main import CLIENT_SETTINGS_JSON
 
 
-with open(SETTINGS_JSON) as file:
+with open(CLIENT_SETTINGS_JSON) as file:
     data = json.load(file)
 
 
-UMODEL_EXE = data["UMODEL_EXE"]
+UMODEL_EXE = data["umodel_exe"]
 KF2_GAME_DIR = data["kf2_game_dir"]
 
 

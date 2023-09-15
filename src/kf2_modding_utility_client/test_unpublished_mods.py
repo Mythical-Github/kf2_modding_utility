@@ -6,21 +6,21 @@ from pathlib import Path
 
 
 # Loading various settings files
-with open(SETTINGS_JSON) as file:
+with open(CLIENT_SETTINGS_JSON) as file:
     data = json.load(file)
-with open(DEV_SETTINGS_JSON) as file:
+with open(DEV_CLIENT_SETTINGS_JSON) as file:
     dev_data = json.load(file)
-with open(MUTATOR_SETTINGS_JSON) as file:
+with open(MUTATOR_CLIENT_SETTINGS_JSON) as file:
     mutators_data = json.load(file)
-with open(GAME_MODE_SETTINGS_JSON) as file:
+with open(GAME_MODE_CLIENT_SETTINGS_JSON) as file:
     game_mode_data = json.load(file)
-with open(MAP_NAME_SETTINGS_JSON) as file:
+with open(MAP_NAME_CLIENT_SETTINGS_JSON) as file:
     map_name_data = json.load(file)
-with open(DIFFICULTY_SETTINGS_JSON) as file:
+with open(DIFFICULTY_CLIENT_SETTINGS_JSON) as file:
     difficulty_data = json.load(file)
-with open(SEASONAL_ZED_SETTINGS_JSON) as file:
+with open(SEASONAL_ZED_CLIENT_SETTINGS_JSON) as file:
     seasonal_zeds_data = json.load(file)
-with open(MATCH_LENGTH_SETTINGS_JSON) as file:
+with open(MATCH_LENGTH_CLIENT_SETTINGS_JSON) as file:
     match_length_data = json.load(file)
 
 

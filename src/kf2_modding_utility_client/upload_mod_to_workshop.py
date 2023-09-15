@@ -1,10 +1,10 @@
 import os
 import json
 from pathlib import Path
-from main import SETTINGS_JSON
+from main import CLIENT_SETTINGS_JSON
 
 
-with open(SETTINGS_JSON) as file:
+with open(CLIENT_SETTINGS_JSON) as file:
     settings_data = json.load(file)
 
 

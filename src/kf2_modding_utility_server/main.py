@@ -2,9 +2,9 @@ import os
 import socket
 
 host = "127.0.0.1"
-port = 1234
+port = 10003
 
-game_dir = r"C:\game_servers\killing_floor_2"
+game_dir = r"C:/game_servers/killing_floor_series/killing_floor_2"
 task_name = "KFServer.exe"
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,11 +24,6 @@ def close_server():
     os.system(f"taskkill /f /im {task_name}")
 
 def update_server():
-    close_server()
-
-    start_server()
-
-def add_new_workshop_to_server_subscriptions():
     close_server()
 
     start_server()
@@ -54,9 +49,5 @@ while True:
     if received_command == 'start_server':
         print('start_server')
         start_server()
-                        
-    if received_command.startswith('add_new_workshop_to_subscriptions'):
-        print('add_new_workshop_to_subscriptions')
-        add_new_workshop_to_server_subscriptions()
 
     client_socket.close()

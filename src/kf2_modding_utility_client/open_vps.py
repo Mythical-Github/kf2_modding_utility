@@ -1,10 +1,10 @@
 import sys
 import json
-from main import SETTINGS_JSON
+from main import CLIENT_SETTINGS_JSON
 from reusable_functions import *
 
 
-with open(SETTINGS_JSON) as settings_json:
+with open(CLIENT_SETTINGS_JSON) as settings_json:
     SETTINGS_DATA = json.load(settings_json)
     
     

@@ -2,10 +2,10 @@ import re
 import sys
 import json
 import subprocess
-from main import SETTINGS_JSON, MOD_VDF
+from main import CLIENT_SETTINGS_JSON, MOD_VDF
 
 
-with open(SETTINGS_JSON) as file:
+with open(CLIENT_SETTINGS_JSON) as file:
     SETTINGS_DATA = json.load(file)
 
 

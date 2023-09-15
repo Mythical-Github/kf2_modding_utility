@@ -1,8 +1,4 @@
-import sys
-import json
-from main import SETTINGS_JSON
-
-SETTINGS = {
+{
     "kf2_server_ip": "127.0.0.1",
     "mod_package_name": "Mythical",
     "mod_game_mode": "KFGameInfo_Mythical",
@@ -31,8 +27,3 @@ SETTINGS = {
     "changenote": "Workshop Item Changenote Description",
     "show_log_window": "false"
 }
-
-with open(SETTINGS_JSON, 'w') as json_file:
-    json.dump(SETTINGS, json_file, indent=4)  # Use json.dump, not json_file.dump
-
-sys.exit()

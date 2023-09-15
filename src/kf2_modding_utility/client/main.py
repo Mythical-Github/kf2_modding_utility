@@ -1,6 +1,8 @@
 import os
 import sys
 import json
+import time
+import shutil
 import subprocess
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -12,23 +14,15 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 MODULE_NAME = "kf2_modding_utility_client"
 LAUNCHER_PY = f"{MODULE_NAME}.py"
-PROJECT_DIR = "../../.."
-CONFIG_DIR = os.path.normpath(os.path.join(os.getcwd(), f"{PROJECT_DIR}/config/{MODULE_NAME}"))
-DATA_DIR = os.path.normpath(os.path.join(os.getcwd(), f"{PROJECT_DIR}/data/{MODULE_NAME}"))
+PROJECT_DIR = f"{os.getcwd()}/../../.."
+
+CONFIG_DIR = f"{PROJECT_DIR}/config"    
+DATA_DIR = f"{PROJECT_DIR}/data"
 
 ICON = f"{DATA_DIR}/images/kf2_icon_main.png"
-INFO_JSON = f"{CONFIG_DIR}/button_data.json"
-WINDOW_POSITION_JSON = f"{CONFIG_DIR}/window_position.json"
-SETTINGS_JSON = f"{CONFIG_DIR}/settings.json"
-DEV_SETTINGS_JSON = f"{CONFIG_DIR}/dev_settings.json"
-MOD_VDF = f"{CONFIG_DIR}/mod.vdf"
-MUTATOR_SETTINGS_JSON = f"{CONFIG_DIR}/mutators.json"
-GAME_MODE_SETTINGS_JSON = f"{CONFIG_DIR}/game_mode.json"
-MAP_NAME_SETTINGS_JSON = f"{CONFIG_DIR}/map_name.json"
-DIFFICULTY_SETTINGS_JSON = f"{CONFIG_DIR}/match_difficulty.json"
-SEASONAL_ZED_SETTINGS_JSON = f"{CONFIG_DIR}/seasonal_zeds.json"
-MATCH_LENGTH_SETTINGS_JSON = f"{CONFIG_DIR}/match_length.json"
-MOD_PACKAGE_NAMES_JSON = f"{CONFIG_DIR}/mod_package_names.json"
+
+CLIENT_SETTINGS_JSON = f"{CONFIG_DIR}/client_settings.json"
+SERVER_SETTINGS_JSON = f"{CONFIG_DIR}/server_settings.json"
 
 in_delete_state = False
 scrollbox_buttons = []
@@ -42,20 +36,17 @@ def execute_file(file_path):
     if not in_delete_state:
         subprocess.Popen([sys.executable, file_path])
 
+def settings_check():
+    if not os.path.isfile(CLIENT_SETTINGS_JSON):
+        shutil.copy(f"{CONFIG_DIR}/settings_examples/client_settings.json", CLIENT_SETTINGS_JSON)
+        # Have it open the settings configurator window here later possibly
+    return
 
 def show_popup_message(message):
     msg_box = QMessageBox()
     msg_box.setWindowIcon(QIcon(ICON))
     msg_box.setText(message)
     msg_box.exec()
-
-
-def settings_check():
-    if not os.path.isfile(SETTINGS_JSON):
-        execute_file("make_settings.py")
-        execute_file("open_settings.py")
-        show_popup_message("Please Configure And Save")
-    return
 
 
 def open_window_for_text_user_input(window_title_text, window_text):
@@ -178,18 +169,18 @@ def add_new_button(file_path):
     if file_path:
         name, ok = QInputDialog.getText(None, "Button Name", "Please Enter New Button Name:")
         if ok:
-            data = load_data_from_json(INFO_JSON)
+            data = load_data_from_json(CLIENT_SETTINGS_JSON)
             new_button = {
                 "title": name,
                 "path": file_path
             }
             data.append(new_button)
-            save_data_to_json(INFO_JSON, data)
+            save_data_to_json(CLIENT_SETTINGS_JSON, data)
             restart_app()
 
 
 def populate_scrollbox_buttons(layout):
-    data = load_data_from_json(INFO_JSON)
+    data = load_data_from_json(CLIENT_SETTINGS_JSON)
     for item in data:
         title_ = item['title']
         path = item['path']
@@ -223,8 +214,8 @@ def toggle_confirm_button(add_and_confirm_button, remove_and_cancel_button):
         add_and_confirm_button.setText("Add Button")
         in_delete_state = False
         if remove_and_cancel_button.isChecked():
-            data = load_data_from_json(INFO_JSON)
-            save_data_to_json(INFO_JSON, data)
+            data = load_data_from_json(CLIENT_SETTINGS_JSON)
+            save_data_to_json(CLIENT_SETTINGS_JSON, data)
             restart_app()
 
 
@@ -272,7 +263,7 @@ class ModdingUtility(QWidget):
 
 def on_add_and_confirm_button_clicked():
     if in_delete_state:
-        data = load_data_from_json(INFO_JSON)
+        data = load_data_from_json(CLIENT_SETTINGS_JSON)
         scrollbox_buttons_to_delete = []
         for button in scrollbox_buttons:
             if button.styleSheet() == style_2:
@@ -281,7 +272,7 @@ def on_add_and_confirm_button_clicked():
             for item in data:
                 if item['title'] == button.text():
                     data.remove(item)
-        save_data_to_json(INFO_JSON, data)
+        save_data_to_json(CLIENT_SETTINGS_JSON, data)
         restart_app()
     else:
         options = QFileDialog.Options()
@@ -292,9 +283,9 @@ def on_add_and_confirm_button_clicked():
 
 
 if __name__ == "__main__":
+    settings_check()
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(ICON))
     win = ModdingUtility()
     win.show()
-    settings_check()
     sys.exit(app.exec_())

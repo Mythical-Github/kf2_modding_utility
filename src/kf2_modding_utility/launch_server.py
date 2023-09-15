@@ -3,7 +3,7 @@ import sys
 import subprocess
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-NEW_SCRIPT_DIR = f"{SCRIPT_DIR}/server/scripts/python"
+NEW_SCRIPT_DIR = f"{SCRIPT_DIR}/server"
 
 os.chdir(NEW_SCRIPT_DIR)
 

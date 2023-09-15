@@ -6,25 +6,29 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-
 TITLE = "KF2 Modding Utility"
-LAUNCHER_PY = "kf2_modding_utility_client.py"
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-os.chdir(SCRIPT_DIR)
-ICON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\images\\kf2_icon_main.png"))
-INFO_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\button_data.json"))
-WINDOW_POSITION_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\window_position.json"))
-SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\settings.json"))
-DEV_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\dev_settings.json"))
-MOD_VDF = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\mod.vdf"))
-MUTATOR_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\mutators.json"))
-GAME_MODE_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\game_mode.json")) 
-MAP_NAME_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\map_name.json")) 
-DIFFICULTY_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\match_difficulty.json"))
-SEASONAL_ZED_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\seasonal_zeds.json"))
-MATCH_LENGTH_SETTINGS_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\match_length.json"))
-MOD_PACKAGE_NAMES_JSON = os.path.normpath(os.path.join(os.getcwd(), "..\\..\\settings\\mod_package_names.json"))
 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+MODULE_NAME = "kf2_modding_utility_client"
+LAUNCHER_PY = f"{MODULE_NAME}.py"
+PROJECT_DIR = "../../.."
+CONFIG_DIR = os.path.normpath(os.path.join(os.getcwd(), f"{PROJECT_DIR}/config/{MODULE_NAME}"))
+DATA_DIR = os.path.normpath(os.path.join(os.getcwd(), f"{PROJECT_DIR}/data/{MODULE_NAME}"))
+
+ICON = f"{DATA_DIR}/images/kf2_icon_main.png"
+INFO_JSON = f"{CONFIG_DIR}/button_data.json"
+WINDOW_POSITION_JSON = f"{CONFIG_DIR}/window_position.json"
+SETTINGS_JSON = f"{CONFIG_DIR}/settings.json"
+DEV_SETTINGS_JSON = f"{CONFIG_DIR}/dev_settings.json"
+MOD_VDF = f"{CONFIG_DIR}/mod.vdf"
+MUTATOR_SETTINGS_JSON = f"{CONFIG_DIR}/mutators.json"
+GAME_MODE_SETTINGS_JSON = f"{CONFIG_DIR}/game_mode.json"
+MAP_NAME_SETTINGS_JSON = f"{CONFIG_DIR}/map_name.json"
+DIFFICULTY_SETTINGS_JSON = f"{CONFIG_DIR}/match_difficulty.json"
+SEASONAL_ZED_SETTINGS_JSON = f"{CONFIG_DIR}/seasonal_zeds.json"
+MATCH_LENGTH_SETTINGS_JSON = f"{CONFIG_DIR}/match_length.json"
+MOD_PACKAGE_NAMES_JSON = f"{CONFIG_DIR}/mod_package_names.json"
 
 in_delete_state = False
 scrollbox_buttons = []

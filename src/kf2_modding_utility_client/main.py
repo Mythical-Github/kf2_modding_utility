@@ -14,7 +14,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 MODULE_NAME = "kf2_modding_utility_client"
 LAUNCHER_PY = f"{MODULE_NAME}.py"
-PROJECT_DIR = f"{os.getcwd()}/../../.."
+PROJECT_DIR = f"{os.getcwd()}/../.."
 
 CONFIG_DIR = f"{PROJECT_DIR}/config"    
 DATA_DIR = f"{PROJECT_DIR}/data"
@@ -62,15 +62,14 @@ def open_window_for_text_user_input(window_title_text, window_text):
     return output_text
 
 
-def save_window_position_to_json():
-    position = {
-        'x': win.x(),
-        'y': win.y(),
-        'width': win.width(),
-        'height': win.height()
-    }
-    with open(WINDOW_POSITION_JSON, "w") as file:
-        json.dump(position, file)
+def save_window_position_to_json(window_position):
+    with open(CLIENT_SETTINGS_JSON, "r") as file:
+        data = json.load(file)
+
+    data["window_position"] = window_position
+
+    with open(CLIENT_SETTINGS_JSON, "w") as file:
+        json.dump(data, file)
 
 
 def load_data_from_json(json_file):
@@ -85,12 +84,11 @@ def save_data_to_json(json_file, data):
 
 def load_window_position():
     try:
-        with open(WINDOW_POSITION_JSON) as file:
-            data = file.read().strip()
-            if data:
-                position = json.loads(data)
-                return position
-    except (FileNotFoundError, json.JSONDecodeError):
+        with open(CLIENT_SETTINGS_JSON, "r") as file:
+            data = json.load(file)
+            if "window_position" in data:
+                return data["window_position"]
+    except (FileNotFoundError, json.JSONDecodeError, KeyError):
         return None
 
 
@@ -181,15 +179,21 @@ def add_new_button(file_path):
 
 def populate_scrollbox_buttons(layout):
     data = load_data_from_json(CLIENT_SETTINGS_JSON)
-    for item in data:
-        title_ = item['title']
-        path = item['path']
-        button_layout = QHBoxLayout()
-        button = create_button(title_, path)
-        button_layout.addWidget(button)
-        layout.addLayout(button_layout)
-        scrollbox_buttons.append(button)
+    scrollbox_buttons = []
+
+    if 'actions' in data:
+        actions = data['actions']
+        for item in actions:
+            title_ = item['title']
+            path = item['path']
+            button_layout = QHBoxLayout()
+            button = create_button(title_, path)
+            button_layout.addWidget(button)
+            layout.addLayout(button_layout)
+            scrollbox_buttons.append(button)
+
     return scrollbox_buttons
+
 
 
 def create_top_scrollbox_buttons(layout, scrollbox_buttons):

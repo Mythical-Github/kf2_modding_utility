@@ -3,7 +3,7 @@ import sys
 import subprocess
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-NEW_SCRIPT_DIR = f"{SCRIPT_DIR}/server"
+NEW_SCRIPT_DIR = f"{SCRIPT_DIR}/kf2_modding_utility_client"
 
 os.chdir(NEW_SCRIPT_DIR)
 
